@@ -20,6 +20,11 @@
 	- Assure la coordination
 	
 - Directeur de projet
+
+	- Pour projet stratégique : clés complexes
+	- En charge d'une équipe d echef de projet: coordonne l'avancement
+	- Point d'escalade pour chef de projets
+	
 - Directeur de production ou opérationel
 
 
