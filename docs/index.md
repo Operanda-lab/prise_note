@@ -1,6 +1,14 @@
-# 1.Chef de projet
+# [Chef de projet](./cdp.md)
 ## Définition
-- Equipe projet
-- Chef de projet
-- Directeur de projet
-- Directeur de production ou opérationel
+- Les postes
+	- Equipe projet
+	- Chef de projet
+	- Directeur de projet
+	- Directeur de production ou opérationel
+
+- Les méthodologies projets
+	- Cycle en V
+	- Agile
+	- La méthode scrum
+	- User story
+	- Devops
