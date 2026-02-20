@@ -13,10 +13,8 @@ git add *
 # Commit avec le message passé en argument
 git commit -m "$1"
 
+# Push
+git push
 
 # Déploiement MkDocs
 mkdocs gh-deploy
-
-
-# Push
-git push

@@ -44,10 +44,10 @@
 
 ## [SQL/POSTGIS](./postgis.md)
 
-## [Interropérabilité](./interoperabilite.md)
+## [Interopérabilité](./interoperabilite.md)
 
 ## [Sources](./sources.md)
 
-
 ## [fichier deploiement md](./deploy_auto.md)
+
 

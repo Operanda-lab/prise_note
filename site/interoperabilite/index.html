@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Interoperabilite - Prise de note CPGEOM 25-27</title>
+    <title>Interopérabilité - Prise de note CPGEOM 25-27</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Interoperabilite";
+        var mkdocs_page_name = "Interop\u00e9rabilit\u00e9";
         var mkdocs_page_input_path = "interoperabilite.md";
         var mkdocs_page_url = null;
       </script>
@@ -76,7 +76,27 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Interoperabilite</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Interopérabilité</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#comprendre">Comprendre</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#definition">Définition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#de-quoi-parle-ton">De quoi parle t'on ?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#les-enjeux-de-linterrop">Les enjeux de l'interrop.</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#les-normes">Les normes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ogc-open-geospatial-consortium">OGC Open geospatial consortium</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#les-geostandards-pour-une-bonne-diffusion">Les géostandards pour une bonne diffusion</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#concevoir-la-notion-dune-conduite-dun-projet">concevoir la notion d'une conduite d'un projet</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -129,7 +149,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Interoperabilite</li>
+      <li class="breadcrumb-item active">Interopérabilité</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -138,7 +158,73 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h1 id="interoperabilite">Interopérabilité</h1>
+<p>Dans la géomatique : </p>
+<h2 id="comprendre">Comprendre</h2>
+<h3 id="definition">Définition</h3>
+<p>interop n'est pas compatibilité</p>
+<p><strong><em>Interopérabilité</em></strong> : système capable de fo,nctionner avec d'autres produits
+sans restriction d'accès ou d emis ene oeuvre
+Notion transversale permettant à de soutils de pouvoir comm. et fonct.
+<strong><em>compatibilité</em></strong> : Notion verticale faisant qu'un outil peut fonctionner dans un envir. donné</p>
+<h3 id="de-quoi-parle-ton">De quoi parle t'on ?</h3>
+<p>C'est échanger des des informations avec les autres systèmes.
+<strong>Langage pivot</strong> : langage universel qui limite l'effort de traduction</p>
+<ul>
+<li>exemple de CAO vs SIG (_ outils QGIS : QCAD _)</li>
+</ul>
+<h3 id="les-enjeux-de-linterrop">Les enjeux de l'interrop.</h3>
+<p><strong>La sémantique</strong> :
+Définition standardisé des concepts, de la structure et du sens des données spat. couche VS classe d'entité</p>
+<p><strong>Géographique</strong>:
+Coordonnées géo. basées IGN VS LAMBERT</p>
+<p><strong>Standards et spec.</strong>:
+L'OGC developpent et promeuvent des standard souverts pour assur l'interrop. 
+OGC faisait des spécifications sur les services et maintenant sur les API. <a href="https://www.ogc.org/standards/">Voir ici</a></p>
+<p><strong>Directives et recommandations</strong> (lois):
+Des initiatives europ. comme INSPIRE -&gt; rendre les données ouvertes notamment environnementales
+Elle oblige de  la diffuser dans différents formats , webservices, , d'ouvrir et partager, de la documenter </p>
+<p><strong>Directives et recommandations</strong></p>
+<h3 id="les-normes">Les normes</h3>
+<p>L'organsation internat. de normalisation (ISO)
+- Normalisation dans le domaine de l'information géo-graphique numérique. <a href="https://www.iso.org/fr/committee/54904/x/catalogue">ISO/TC 211</a></p>
+<ul>
+<li>Information géographique — Métadonnées <a href="https://www.iso.org/fr/search.html?PROD_isoorg_fr%5Bquery%5D=19115">ISO 19115</a></li>
+</ul>
+<h3 id="ogc-open-geospatial-consortium">OGC Open geospatial consortium</h3>
+<h3 id="les-geostandards-pour-une-bonne-diffusion">Les géostandards pour une bonne diffusion</h3>
+<ul>
+<li>
+<p><strong>FAIR</strong> : Findable, accessible, Interopérable , Reusable</p>
+</li>
+<li>
+<p><strong>TAIR</strong> (Thomas) : Trouvable, accessible, interropérable, Réutilisable</p>
+</li>
+</ul>
+<p><strong>Exemple</strong> age du WMS vs COG (le tiff a intégre une spec. Clowd optimized geotiff) fonctionnalité qui permet de déposer dans un server et se comporte ensuite comme un web services tuilé. Alors que le WMS, il faut le mettre sur un geoserver qui le transmette.
+<strong>SERVICES</strong>
+Les web services à lire dans une interface librairie javascript openlayer, leaflet. ou client carto
+<strong>PARMI LES STANDARDS</strong></p>
+<ul>
+<li>
+<p>Des web-services distants
+WMS
+WMTS le plus utilisé
+WFS remplacé par service vecteur tuilé vectoriel (tuilage par niveau de zoom)
+WCS il découpe une emprise dans un WMS
+CS-W pour le moissonnage
+WPS</p>
+</li>
+<li>
+<p>Des formats (en local)
+SLD
+GML
+KML
+GPKG
+WKT CRS</p>
+</li>
+</ul>
+<h2 id="concevoir-la-notion-dune-conduite-dun-projet">concevoir la notion d'une conduite d'un projet</h2>
               
             </div>
           </div><footer>
