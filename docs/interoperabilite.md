@@ -114,6 +114,7 @@ WKT CRS
 **WMS RASTER:** 
 Une seule image en fonction de l'emprise. Souvent lourdes
 ![](https://data.geopf.fr/wms-r/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=184481.4121893416159%2C6185993.172005689703%2C348872.2413342188811%2C6309762.895286935382&CRS=EPSG%3A3857&WIDTH=1122&HEIGHT=844&LAYERS=OI.OrthoimageCoverage.HR&STYLES=&FORMAT=image%2Fjpeg&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96)
+
 ![wms dans qgis](./img/img_wms.jpg)
 
 
@@ -137,6 +138,7 @@ FORMAT_OPTIONS=dpi%3A96
 Web service tuilé
 
 ![](https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=HR.ORTHOIMAGERY.ORTHOPHOTOS&STYLE=normal&FORMAT=image%2Fjpeg&TILEMATRIXSET=PM_6_19&TILEMATRIX=11&TILEROW=702&TILECOL=1035)
+
 ![wmts dans qgis](./img/img_wmts.jpg)
 ```
 https://data.geopf.fr/wmts?SERVICE=WMTS&
