@@ -17,7 +17,5 @@ git add *
 git commit -m "$1"
 
 
-
-
 # Push
 git push

@@ -71,4 +71,71 @@ KML
 GPKG
 WKT CRS
 
+**Avantages des web services**
+
+- Mise à disposition globale et contrôlée des données spatiales
+- Un temps de chargement « côté client » performant
+- Une interopérabilité entre les outils SIG
+
+****DEF :**** Getcapabilities = porte d'entrée d'un serveur aisni je vais avoir la liste des couches disponibles. Le get capabilities est un fichier XML
+
+**WMS RASTER:** 
+Une seule image en fonction de l'emprise. Souvent lourdes
+![](https://data.geopf.fr/wms-r/wms?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=184481.4121893416159%2C6185993.172005689703%2C348872.2413342188811%2C6309762.895286935382&CRS=EPSG%3A3857&WIDTH=1122&HEIGHT=844&LAYERS=OI.OrthoimageCoverage.HR&STYLES=&FORMAT=image%2Fjpeg&DPI=96&MAP_RESOLUTION=96&FORMAT_OPTIONS=dpi%3A96)
+![wms dans qgis](.\img\img_wms.jpg)
+
+
+```
+https://data.geopf.fr/wms-r/wms?SERVICE=WMS&
+VERSION=1.3.0&
+REQUEST=GetMap&
+BBOX=184481.4121893416159%2C6185993.172005689703%2C348872.2413342188811%2C6309762.895286935382&
+CRS=EPSG%3A3857&
+WIDTH=1122&
+HEIGHT=844&
+LAYERS=OI.OrthoimageCoverage.HR&
+STYLES=&
+FORMAT=image%2Fjpeg&
+DPI=96&
+MAP_RESOLUTION=96&
+FORMAT_OPTIONS=dpi%3A96
+```
+
+**WMTS:**
+Web service tuilé
+![](https://data.geopf.fr/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=HR.ORTHOIMAGERY.ORTHOPHOTOS&STYLE=normal&FORMAT=image%2Fjpeg&TILEMATRIXSET=PM_6_19&TILEMATRIX=11&TILEROW=702&TILECOL=1035)
+![wmts dans qgis](.\img\img_wmts.jpg)
+```
+https://data.geopf.fr/wmts?SERVICE=WMTS&
+REQUEST=GetTile&
+VERSION=1.0.0&
+LAYER=GEOGRAPHICALGRIDSYSTEMS.EDUGEO.TOULOUSE1948&
+STYLE=normal&
+FORMAT=image%2Fpng&
+TILEMATRIXSET=PM_6_16&
+TILEMATRIX=15&TILEROW=11963&
+TILECOL=16516
+```
+
+**WFS :**
+Il charge directement la totalité des vecteurs
+
+https://data.geopf.fr/wfs/wfs?SERVICE=WFS&
+REQUEST=GetFeature&
+VERSION=2.0.0&
+TYPENAMES=ADMINEXPRESS-COG.2025:canton&
+STARTINDEX=0&
+COUNT=5000&
+SRSNAME=urn:ogc:def:crs:EPSG::4326&
+BBOX=-47.04357705960558178,-65.95729981768334937,76.7429357396055849,58.70921188768334531,urn:ogc:def:crs:EPSG::4326
+
+**TMS :** Comme le wmts, de petites imagettes mais qui existe déjà sur le serveur.
+https://tile.openstreetmap.org/8/135/79.png
+Page
+ puis colonne puis ligne puis image (valeur en png)
+ 
+![](https://tile.openstreetmap.org/8/135/79.png)
+
+
+
 ## concevoir la notion d'une conduite d'un projet
