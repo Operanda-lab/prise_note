@@ -6,6 +6,9 @@ if [ -z "$1" ]; then
   echo "Usage : ./deploy.sh \"Mon message\""
   exit 1
 fi
+# Déploiement MkDocs
+mkdocs gh-deploy
+
 
 # Ajout des fichiers
 git add *
@@ -14,8 +17,6 @@ git add *
 git commit -m "$1"
 
 
-# Déploiement MkDocs
-mkdocs gh-deploy
 
 
 # Push
