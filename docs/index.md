@@ -43,4 +43,7 @@
 
 # [SQL/POSTGIS](./postgis.md)
 
-# [Sources] (./sources.md "Sources Neogeo")
+# [Sources](./sources.md)
+
+# [fichier deploiement md](./deploy_auto.md)
+
