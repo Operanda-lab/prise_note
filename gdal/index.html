@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Postgis - Prise de note CPGEOM 25-27</title>
+    <title>Gdal - Prise de note CPGEOM 25-27</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Postgis";
-        var mkdocs_page_input_path = "postgis.md";
+        var mkdocs_page_name = "Gdal";
+        var mkdocs_page_input_path = "gdal.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -71,8 +71,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../di/">Di</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../gdal/">Gdal</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Gdal</a>
+    <ul class="current">
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -95,8 +97,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../outils/">Outils</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Postgis</a>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../postgis/">Postgis</a>
                 </li>
               </ul>
               <ul>
@@ -137,7 +139,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Postgis</li>
+      <li class="breadcrumb-item active">Gdal</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -146,13 +148,93 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                
+                <h2 id="gdal">GDAL</h2>
+<pre><code>salut, pourquoi dit on que ogr GDAL est une librairie de bas niveau. Saurais tu m'expliquer ? SI ce n'est pas ça alors peux tu me l'expliquer aussi ?
+</code></pre>
+<ol>
+<li>Pourquoi on dit que OGR/GDAL est une librairie “bas niveau” ?</li>
+</ol>
+<p>Déjà, précision :</p>
+<p>GDAL = raster</p>
+<p>OGR = vecteur
+(OGR est aujourd’hui intégré dans GDAL, mais on garde le nom par habitude.)</p>
+<p>Quand on dit bas niveau, ça veut dire :</p>
+<p>👉 Elle manipule les structures de données géospatiales très proches de leur représentation brute (fichiers, drivers, géométries, buffers mémoire).</p>
+<p>2️⃣ Concrètement, ça veut dire quoi ?</p>
+<p>Avec GDAL/OGR, tu travailles directement avec :</p>
+<p>des drivers</p>
+<p>des datasources</p>
+<p>des layers</p>
+<p>des features</p>
+<p>des géométries</p>
+<p>des bandes raster</p>
+<p>des buffers mémoire</p>
+<p>Tu dois gérer toi-même :</p>
+<p>l’ouverture / fermeture des datasets</p>
+<p>la gestion des erreurs</p>
+<p>les projections</p>
+<p>les conversions de type</p>
+<p>parfois la mémoire</p>
+<p>C’est proche du moteur.</p>
+<p>3️⃣ Comparaison avec du “haut niveau”</p>
+<p>Prenons ton terrain de jeu :</p>
+<p>🔹 Avec GDAL (bas niveau)</p>
+<p>En Python :</p>
+<p>ds = ogr.Open("parcelles.shp")
+layer = ds.GetLayer()
+for feature in layer:
+    geom = feature.GetGeometryRef()</p>
+<p>Tu manipules directement les objets internes.</p>
+<p>🔹 Avec GeoPandas (haut niveau)
+import geopandas as gpd
+gdf = gpd.read_file("parcelles.shp")</p>
+<p>En une ligne, tu as :</p>
+<p>lecture</p>
+<p>projection gérée</p>
+<p>dataframe prêt à analyser</p>
+<p>intégration avec pandas</p>
+<p>GeoPandas utilise GDAL en dessous.</p>
+<p>👉 Donc GDAL = moteur
+👉 GeoPandas / QGIS / Fiona = carrosserie confortable</p>
+<p>4️⃣ Analogie mécanique (version Olivier)</p>
+<p>GDAL, c’est :</p>
+<p>Le moteur thermique démonté sur l’établi.</p>
+<p>GeoPandas, c’est :</p>
+<p>La voiture clé en main.</p>
+<p>QGIS, c’est :</p>
+<p>Le tableau de bord + volant + GPS.</p>
+<p>Toi, avec PostGIS, tu travailles plutôt au niveau “moteur optimisé sur banc d’essai” 😄</p>
+<p>5️⃣ Pourquoi c’est important en géomatique ?</p>
+<p>Parce que GDAL :</p>
+<p>supporte des centaines de formats</p>
+<p>est écrit en C/C++</p>
+<p>est ultra performant</p>
+<p>est la base de presque tous les outils SIG modernes</p>
+<p>Sans GDAL :</p>
+<p>pas de QGIS</p>
+<p>pas de conversion massive de formats</p>
+<p>pas de raster reprojection rapide</p>
+<p>6️⃣ Est-ce vraiment “bas niveau” ?</p>
+<p>Ça dépend du point de vue :</p>
+<p>Contexte    Niveau
+Développeur C++ Moyen niveau
+Data scientist Python   Bas niveau
+Utilisateur QGIS    Très bas niveau</p>
+<p>Donc le terme est relatif.</p>
+<p>7️⃣ Pourquoi ça peut te parler particulièrement</p>
+<p>Vu ton projet tiny house avec vues matérialisées en PostGIS :</p>
+<p>Tu as déjà une approche “structure interne des données”.</p>
+<p>GDAL est dans la même logique :</p>
+<p>tu contrôles</p>
+<p>tu comprends les couches</p>
+<p>tu ne passes pas par une abstraction magique</p>
+<p>Et comme tu aimes comprendre avant d’automatiser (je me souviens 😉), apprendre GDAL, c’est comme comprendre le BIOS avant d’écrire l’OS.</p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../outils/" class="btn btn-neutral float-left" title="Outils"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../python/" class="btn btn-neutral float-right" title="Python">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../di/" class="btn btn-neutral float-left" title="Di"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ia/" class="btn btn-neutral float-right" title="Ia">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -175,10 +257,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../outils/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../di/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../python/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../ia/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
