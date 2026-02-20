@@ -48,6 +48,8 @@
 
 ## [Sources](./sources.md)
 
+## [Outils](./outils.md)
+
 ## [fichier deploiement md](./deploy_auto.md)
 
 

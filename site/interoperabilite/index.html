@@ -72,6 +72,10 @@
                 </li>
               </ul>
               <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../gdal/">Gdal</a>
+                </li>
+              </ul>
+              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../ia/">Ia</a>
                 </li>
               </ul>
@@ -100,6 +104,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#extract-transform-and-load">EXTRACT TRANSFORM AND LOAD</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#les-formats-de-donnees">LES FORMATS DE DONNEES</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -109,6 +115,10 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../openig/">Openig</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../outils/">Outils</a>
                 </li>
               </ul>
               <ul>
@@ -168,13 +178,13 @@
 <p>interop n'est pas compatibilité</p>
 <p><strong><em>Interopérabilité</em></strong> : système capable de fo,nctionner avec d'autres produits
 sans restriction d'accès ou d emis ene oeuvre
-Notion transversale permettant à de soutils de pouvoir comm. et fonct.
-<strong><em>compatibilité</em></strong> : Notion verticale faisant qu'un outil peut fonctionner dans un envir. donné</p>
+Notion transversale permettant à de soutils de pouvoir comm. et fonct.</p>
+<p><strong><em>compatibilité</em></strong> : Notion verticale faisant qu'un outil peut fonctionner dans un envir. donné</p>
 <h2 id="de-quoi-parle-ton">De quoi parle t'on ?</h2>
 <p>C'est échanger des des informations avec les autres systèmes.
 <strong>Langage pivot</strong> : langage universel qui limite l'effort de traduction</p>
 <ul>
-<li>exemple de CAO vs SIG (_ outils QGIS : QCAD _)</li>
+<li>exemple de CAO vs SIG (outils QGIS : QCAD)</li>
 </ul>
 <h2 id="les-enjeux-de-linterrop">Les enjeux de l'interrop.</h2>
 <p><strong>La sémantique</strong> :
@@ -365,6 +375,12 @@ BBOX=-47.04357705960558178,-65.95729981768334937,76.7429357396055849,58.70921188
 <p>De restructurer complètement le modèle de données et l’adapter au modèle cible, à l’aide d’unités de traitement (transformers chez FME) qui modifient la structure, les attributs et la géométrie des entités.</p>
 </li>
 </ul>
+<h2 id="les-formats-de-donnees">LES FORMATS DE DONNEES</h2>
+<p>L'information géographique utilisée en géomatique se décline en deux types de données : les données vecteurs et les données rasters.
+Les logiciels SIG vont stocker ces données vecteurs et rasters dans des fichiers dont le format est varié en fonction des logiciels.</p>
+<p>https://georezo.net/wiki/main/donnees/extensions</p>
+<p><strong>TIF</strong> : Geotif il embarque nativement les informationhs de georeferencement (encapsulage)</p>
+<p><strong>JPEG2000</strong> : Format compréssé qui embarque aussi le georeferencement</p>
               
             </div>
           </div><footer>

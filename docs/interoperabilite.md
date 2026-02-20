@@ -8,6 +8,7 @@ interop n'est pas compatibilité
 ***Interopérabilité*** : système capable de fo,nctionner avec d'autres produits
 sans restriction d'accès ou d emis ene oeuvre
 Notion transversale permettant à de soutils de pouvoir comm. et fonct.
+
 ***compatibilité*** : Notion verticale faisant qu'un outil peut fonctionner dans un envir. donné
 
 ## De quoi parle t'on ?
@@ -15,7 +16,7 @@ Notion transversale permettant à de soutils de pouvoir comm. et fonct.
 C'est échanger des des informations avec les autres systèmes.
 **Langage pivot** : langage universel qui limite l'effort de traduction
 
-- exemple de CAO vs SIG (\_ outils QGIS : QCAD \_)
+- exemple de CAO vs SIG (outils QGIS : QCAD)
 
 ## Les enjeux de l'interrop.
 
@@ -207,4 +208,16 @@ L’ETL spatial permet :
 - De traduire des jeux de données géographiques d’un format vers un autre (OGR / GDAL),
 
 - De restructurer complètement le modèle de données et l’adapter au modèle cible, à l’aide d’unités de traitement (transformers chez FME) qui modifient la structure, les attributs et la géométrie des entités.
+
+## LES FORMATS DE DONNEES
+
+L'information géographique utilisée en géomatique se décline en deux types de données : les données vecteurs et les données rasters.
+Les logiciels SIG vont stocker ces données vecteurs et rasters dans des fichiers dont le format est varié en fonction des logiciels.
+
+https://georezo.net/wiki/main/donnees/extensions
+
+**TIF** : Geotif il embarque nativement les informationhs de georeferencement (encapsulage)
+
+**JPEG2000** : Format compréssé qui embarque aussi le georeferencement
+
 
