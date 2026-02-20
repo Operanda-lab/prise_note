@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Prise de notes CPGEOM 25-27 - Prise de note CPGEOM 25-27</title>
+    <title>Deploy auto - Prise de note CPGEOM 25-27</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Prise de notes CPGEOM 25-27";
-        var mkdocs_page_input_path = "readme.md";
+        var mkdocs_page_name = "Deploy auto";
+        var mkdocs_page_input_path = "deploy_auto.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -63,6 +63,10 @@
                 <li class="toctree-l1"><a class="reference internal" href="../cycled/">Cycled</a>
                 </li>
               </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Deploy auto</a>
+                </li>
+              </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../di/">Di</a>
                 </li>
@@ -85,14 +89,6 @@
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Prise de notes CPGEOM 25-27</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#quels-usages">Quels usages ?</a>
-    </li>
-    </ul>
                 </li>
               </ul>
               <ul>
@@ -129,7 +125,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Prise de notes CPGEOM 25-27</li>
+      <li class="breadcrumb-item active">Deploy auto</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -138,18 +134,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="prise-de-notes-cpgeom-25-27">Prise de notes CPGEOM 25-27</h1>
-<h2 id="quels-usages">Quels usages ?</h2>
-<ul>
-<li>Proposer les notes de chaques cours réalisés dans le cadre de CPGEOM</li>
-<li>Montrer les différentes procédures réalisées dans le cadre de la prise de notes</li>
-</ul>
+                <p>Dans ton dossier :</p>
+<pre><code>nano deploy.sh
+</code></pre>
+<p>Tu mets dedans :</p>
+<pre><code>#!/bin/bash
+
+# Vérifie qu'un message est fourni
+if [ -z &quot;$1&quot; ]; then
+  echo &quot;Tu dois fournir un message de commit.&quot;
+  echo &quot;Usage : ./deploy.sh \&quot;Mon message\&quot;&quot;
+  exit 1
+fi
+
+# Ajout des fichiers
+git add *
+
+# Commit avec le message passé en argument
+git commit -m &quot;$1&quot;
+
+# Push
+git push
+
+# Déploiement MkDocs
+mkdocs gh-deploy
+</code></pre>
+<p>Ensuite :</p>
+<p>Ctrl + O
+Entrée
+Ctrl + X</p>
+<p>🔐 4️⃣ Rendre le script exécutable</p>
+<p>Très important :</p>
+<pre><code>chmod +x deploy.sh
+</code></pre>
+<p>👉 Ça donne le droit d’exécution au fichier.</p>
+<p>🚀 5️⃣ Utilisation</p>
+<p>Ensuite tu pourras faire :</p>
+<pre><code>./deploy.sh &quot;Ajout section PostGIS&quot;
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../python/" class="btn btn-neutral float-left" title="Python"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../sig/" class="btn btn-neutral float-right" title="Sig">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../cycled/" class="btn btn-neutral float-left" title="Cycled"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../di/" class="btn btn-neutral float-right" title="Di">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -172,10 +200,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../python/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../cycled/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../sig/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../di/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
