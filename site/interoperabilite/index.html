@@ -78,23 +78,27 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Interopérabilité</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#comprendre">Comprendre</a>
+    <li class="toctree-l2"><a class="reference internal" href="#definition">Définition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#de-quoi-parle-ton">De quoi parle t'on ?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#les-enjeux-de-linterrop">Les enjeux de l'interrop.</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#les-normes">Les normes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ogc-open-geospatial-consortium">OGC Open geospatial consortium</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#definition">Définition</a>
+    <li class="toctree-l3"><a class="reference internal" href="#les-missions">Les missions</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#de-quoi-parle-ton">De quoi parle t'on ?</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#les-enjeux-de-linterrop">Les enjeux de l'interrop.</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#les-normes">Les normes</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ogc-open-geospatial-consortium">OGC Open geospatial consortium</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#les-geostandards-pour-une-bonne-diffusion">Les géostandards pour une bonne diffusion</a>
+    <li class="toctree-l3"><a class="reference internal" href="#des-ressources">Des ressources</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#concevoir-la-notion-dune-conduite-dun-projet">concevoir la notion d'une conduite d'un projet</a>
+    <li class="toctree-l2"><a class="reference internal" href="#les-geostandards-pour-une-bonne-diffusion">Les géostandards pour une bonne diffusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#catalogage-et-metadonnees">Catalogage et Métadonnées</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extract-transform-and-load">EXTRACT TRANSFORM AND LOAD</a>
     </li>
     </ul>
                 </li>
@@ -160,20 +164,19 @@
               
                 <h1 id="interoperabilite">Interopérabilité</h1>
 <p>Dans la géomatique : </p>
-<h2 id="comprendre">Comprendre</h2>
-<h3 id="definition">Définition</h3>
+<h2 id="definition">Définition</h2>
 <p>interop n'est pas compatibilité</p>
 <p><strong><em>Interopérabilité</em></strong> : système capable de fo,nctionner avec d'autres produits
 sans restriction d'accès ou d emis ene oeuvre
 Notion transversale permettant à de soutils de pouvoir comm. et fonct.
 <strong><em>compatibilité</em></strong> : Notion verticale faisant qu'un outil peut fonctionner dans un envir. donné</p>
-<h3 id="de-quoi-parle-ton">De quoi parle t'on ?</h3>
+<h2 id="de-quoi-parle-ton">De quoi parle t'on ?</h2>
 <p>C'est échanger des des informations avec les autres systèmes.
 <strong>Langage pivot</strong> : langage universel qui limite l'effort de traduction</p>
 <ul>
 <li>exemple de CAO vs SIG (_ outils QGIS : QCAD _)</li>
 </ul>
-<h3 id="les-enjeux-de-linterrop">Les enjeux de l'interrop.</h3>
+<h2 id="les-enjeux-de-linterrop">Les enjeux de l'interrop.</h2>
 <p><strong>La sémantique</strong> :
 Définition standardisé des concepts, de la structure et du sens des données spat. couche VS classe d'entité</p>
 <p><strong>Géographique</strong>:
@@ -185,14 +188,54 @@ OGC faisait des spécifications sur les services et maintenant sur les API. <a h
 Des initiatives europ. comme INSPIRE -&gt; rendre les données ouvertes notamment environnementales
 Elle oblige de  la diffuser dans différents formats , webservices, , d'ouvrir et partager, de la documenter </p>
 <p><strong>Directives et recommandations</strong></p>
-<h3 id="les-normes">Les normes</h3>
+<h2 id="les-normes">Les normes</h2>
 <p>L'organsation internat. de normalisation (ISO)
 - Normalisation dans le domaine de l'information géo-graphique numérique. <a href="https://www.iso.org/fr/committee/54904/x/catalogue">ISO/TC 211</a></p>
 <ul>
 <li>Information géographique — Métadonnées <a href="https://www.iso.org/fr/search.html?PROD_isoorg_fr%5Bquery%5D=19115">ISO 19115</a></li>
 </ul>
-<h3 id="ogc-open-geospatial-consortium">OGC Open geospatial consortium</h3>
-<h3 id="les-geostandards-pour-une-bonne-diffusion">Les géostandards pour une bonne diffusion</h3>
+<h2 id="ogc-open-geospatial-consortium">OGC Open geospatial consortium</h2>
+<p>Organisation internationale à but non lucratif dédiée au développement des systèmes ouverts en géomatique.</p>
+<p>Elle a été fondée en 1994 pour répondre aux problèmes de non interopérabilité des applications concernant l'information géographique.</p>
+<p>https://www.ogc.org/</p>
+<h3 id="les-missions">Les missions</h3>
+<ul>
+<li>
+<p>regrouper les acteurs concernés afin de développer et promouvoir les standards ouverts.</p>
+</li>
+<li>
+<p>garantir l'interopérabilité dans le domaine de la géomatique</p>
+</li>
+<li>
+<p>favoriser la coopération entre développeurs, fournisseurs et utilisateurs</p>
+</li>
+<li>
+<p>permettre de réaliser des systèmes et des services d'information complexes et ouverts</p>
+</li>
+<li>
+<p>impliquer l’ensemble de la communauté dans le processus d’interopérabilité</p>
+</li>
+</ul>
+<h3 id="des-ressources">Des ressources</h3>
+<p>https://www.ogc.org/resources/ogc-glossary/</p>
+<ul>
+<li>
+<p>Une plateforme (le site)</p>
+</li>
+<li>
+<p>les standards internationaux assurant l'interopérabilité</p>
+</li>
+<li>
+<p>des retours d'expériences et bonnes pratiques</p>
+</li>
+<li>
+<p>une communauté de membres</p>
+</li>
+<li>
+<p>des rapports et publications scientifiques</p>
+</li>
+</ul>
+<h2 id="les-geostandards-pour-une-bonne-diffusion">Les géostandards pour une bonne diffusion</h2>
 <ul>
 <li>
 <p><strong>FAIR</strong> : Findable, accessible, Interopérable , Reusable</p>
@@ -234,7 +277,7 @@ WKT CRS</p>
 <p><strong>WMS RASTER:</strong> 
 Une seule image en fonction de l'emprise. Souvent lourdes
 <img alt="" src="https://data.geopf.fr/wms-r/wms?SERVICE=WMS&amp;VERSION=1.3.0&amp;REQUEST=GetMap&amp;BBOX=184481.4121893416159%2C6185993.172005689703%2C348872.2413342188811%2C6309762.895286935382&amp;CRS=EPSG%3A3857&amp;WIDTH=1122&amp;HEIGHT=844&amp;LAYERS=OI.OrthoimageCoverage.HR&amp;STYLES=&amp;FORMAT=image%2Fjpeg&amp;DPI=96&amp;MAP_RESOLUTION=96&amp;FORMAT_OPTIONS=dpi%3A96" />
-<img alt="wms dans qgis" src=".\img\img_wms.jpg" /></p>
+<img alt="wms dans qgis" src="../img/img_wms.jpg" /></p>
 <pre><code>https://data.geopf.fr/wms-r/wms?SERVICE=WMS&amp;
 VERSION=1.3.0&amp;
 REQUEST=GetMap&amp;
@@ -250,9 +293,9 @@ MAP_RESOLUTION=96&amp;
 FORMAT_OPTIONS=dpi%3A96
 </code></pre>
 <p><strong>WMTS:</strong>
-Web service tuilé
-<img alt="" src="https://data.geopf.fr/wmts?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=HR.ORTHOIMAGERY.ORTHOPHOTOS&amp;STYLE=normal&amp;FORMAT=image%2Fjpeg&amp;TILEMATRIXSET=PM_6_19&amp;TILEMATRIX=11&amp;TILEROW=702&amp;TILECOL=1035" />
-<img alt="wmts dans qgis" src=".\img\img_wmts.jpg" /></p>
+Web service tuilé</p>
+<p><img alt="" src="https://data.geopf.fr/wmts?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=HR.ORTHOIMAGERY.ORTHOPHOTOS&amp;STYLE=normal&amp;FORMAT=image%2Fjpeg&amp;TILEMATRIXSET=PM_6_19&amp;TILEMATRIX=11&amp;TILEROW=702&amp;TILECOL=1035" />
+<img alt="wmts dans qgis" src="../img/img_wmts.jpg" /></p>
 <pre><code>https://data.geopf.fr/wmts?SERVICE=WMTS&amp;
 REQUEST=GetTile&amp;
 VERSION=1.0.0&amp;
@@ -265,20 +308,63 @@ TILECOL=16516
 </code></pre>
 <p><strong>WFS :</strong>
 Il charge directement la totalité des vecteurs</p>
-<p>https://data.geopf.fr/wfs/wfs?SERVICE=WFS&amp;
+<pre><code>https://data.geopf.fr/wfs/wfs?SERVICE=WFS&amp;
 REQUEST=GetFeature&amp;
 VERSION=2.0.0&amp;
 TYPENAMES=ADMINEXPRESS-COG.2025:canton&amp;
 STARTINDEX=0&amp;
 COUNT=5000&amp;
 SRSNAME=urn:ogc:def:crs:EPSG::4326&amp;
-BBOX=-47.04357705960558178,-65.95729981768334937,76.7429357396055849,58.70921188768334531,urn:ogc:def:crs:EPSG::4326</p>
-<p><strong>TMS :</strong> Comme le wmts, de petites imagettes mais qui existe déjà sur le serveur.
-https://tile.openstreetmap.org/8/135/79.png
-Page
+BBOX=-47.04357705960558178,-65.95729981768334937,76.7429357396055849,58.70921188768334531,urn:ogc:def:crs:EPSG::4326
+</code></pre>
+<p><strong>TMS :</strong> Comme le wmts, de petites imagettes mais qui existe déjà sur le serveur.</p>
+<pre><code>https://tile.openstreetmap.org/8/135/79.png
+</code></pre>
+<p>Page
  puis colonne puis ligne puis image (valeur en png)</p>
 <p><img alt="" src="https://tile.openstreetmap.org/8/135/79.png" /></p>
-<h2 id="concevoir-la-notion-dune-conduite-dun-projet">concevoir la notion d'une conduite d'un projet</h2>
+<h2 id="catalogage-et-metadonnees">Catalogage et Métadonnées</h2>
+<p>La notion de diffusion de donnée a été confirmée par la possibilité de partager des données de qualité.</p>
+<ul>
+<li>
+<p><strong>Des données de qualité</strong> =&gt; exhaustives, propres et géométriquement correctes</p>
+</li>
+<li>
+<p><strong>Des données documentées</strong> =&gt; fiches de métadonnées suivant des normes de rédaction (ISO 19115 / 19139, INSPIRE, DCAT)</p>
+</li>
+<li>
+<p><strong>Des données diffusables</strong> =&gt; catalogue de données / métadonnées, Catalogue Service Web CSW</p>
+</li>
+<li>
+<p><strong>Des données réutilisables</strong> =&gt; accessibles, ouvertes</p>
+</li>
+</ul>
+<h2 id="extract-transform-and-load">EXTRACT TRANSFORM AND LOAD</h2>
+<ul>
+<li>
+<p><strong>Extact</strong> : le processus d'extraction doit convertir les données dans un format adapté à une transformation ultérieure</p>
+</li>
+<li>
+<p><strong>Transform</strong> : Nettoyage, Filtrage, Enrichissement, Division, (spliting), Regroupement.</p>
+</li>
+<li>
+<p><strong>Load</strong> : Les données transformées peuvent être chargé dans la base cible.</p>
+</li>
+</ul>
+<p><strong>Spatial ETL</strong></p>
+<p>L’ETL Spatial, aussi connu sous l’appellation <strong>GTL (« Geographic Transformation and Load »)</strong> propose les mêmes fonctionnalités que l’ETL, appliquées à la manipulation des données géographiques.</p>
+<p>L’ETL spatial permet :</p>
+<ul>
+<li>
+<p>De synchroniser des bases entre-elles,</p>
+</li>
+<li>
+<p>De traduire des jeux de données géographiques d’un format vers un autre (OGR / GDAL),</p>
+</li>
+<li>
+<p>De restructurer complètement le modèle de données et l’adapter au modèle cible, à l’aide d’unités de traitement (transformers chez FME) qui modifient la structure, les attributs et la géométrie des entités.</p>
+</li>
+</ul>
               
             </div>
           </div><footer>
