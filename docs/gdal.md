@@ -1,9 +1,11 @@
 ## GDAL
 ```
-salut, pourquoi dit on que ogr GDAL est une librairie de bas niveau. Saurais tu m'expliquer ? SI ce n'est pas ça alors peux tu me l'expliquer aussi ?
+salut, pourquoi dit on que ogr GDAL est une librairie de bas niveau. 
+Saurais tu m'expliquer ? 
+SI ce n'est pas ça alors peux tu me l'expliquer aussi ?
 ```
 
-1. Pourquoi on dit que OGR/GDAL est une librairie “bas niveau” ?
+### 1. Pourquoi on dit que OGR/GDAL est une librairie “bas niveau” ?
 
 Déjà, précision :
 
@@ -12,93 +14,77 @@ GDAL = raster
 OGR = vecteur
 (OGR est aujourd’hui intégré dans GDAL, mais on garde le nom par habitude.)
 
-Quand on dit bas niveau, ça veut dire :
+**Quand on dit bas niveau, ça veut dire** : Elle manipule les structures de données géospatiales très proches de leur représentation brute (fichiers, drivers, géométries, buffers mémoire).
 
-👉 Elle manipule les structures de données géospatiales très proches de leur représentation brute (fichiers, drivers, géométries, buffers mémoire).
-
-2️⃣ Concrètement, ça veut dire quoi ?
+### 2. Concrètement, ça veut dire quoi ?
 
 Avec GDAL/OGR, tu travailles directement avec :
 
-des drivers
-
-des datasources
-
-des layers
-
-des features
-
-des géométries
-
-des bandes raster
-
-des buffers mémoire
+- des drivers
+- des datasources
+- des layers
+- des features
+- des géométries
+- des bandes raster
+- des buffers mémoire
 
 Tu dois gérer toi-même :
 
-l’ouverture / fermeture des datasets
+- l’ouverture / fermeture des datasets
+- la gestion des erreurs
+- les projections
+- les conversions de type
+- parfois la mémoire
+- C’est proche du moteur.
 
-la gestion des erreurs
-
-les projections
-
-les conversions de type
-
-parfois la mémoire
-
-C’est proche du moteur.
-
-3️⃣ Comparaison avec du “haut niveau”
-
-Prenons ton terrain de jeu :
+### 3. Comparaison avec du “haut niveau”
 
 🔹 Avec GDAL (bas niveau)
 
-En Python :
-
+En Python : Tu manipules directement les objets internes.
+```
 ds = ogr.Open("parcelles.shp")
 layer = ds.GetLayer()
 for feature in layer:
     geom = feature.GetGeometryRef()
+```
+👉 Donc GDAL = moteur
 
-Tu manipules directement les objets internes.
 
 🔹 Avec GeoPandas (haut niveau)
+
+```
 import geopandas as gpd
 gdf = gpd.read_file("parcelles.shp")
+```
 
 En une ligne, tu as :
 
-lecture
+- lecture
+- projection gérée
+- dataframe prêt à analyser
+- intégration avec pandas
+- GeoPandas utilise GDAL en dessous.
 
-projection gérée
-
-dataframe prêt à analyser
-
-intégration avec pandas
-
-GeoPandas utilise GDAL en dessous.
-
-👉 Donc GDAL = moteur
 👉 GeoPandas / QGIS / Fiona = carrosserie confortable
 
-4️⃣ Analogie mécanique (version Olivier)
+### 4. Analogie mécanique (version Olivier)
 
-GDAL, c’est :
+**GDAL, c’est :**
 
 Le moteur thermique démonté sur l’établi.
 
-GeoPandas, c’est :
+**GeoPandas, c’est :**
 
 La voiture clé en main.
 
-QGIS, c’est :
+**QGIS, c’est :**
 
 Le tableau de bord + volant + GPS.
 
 Toi, avec PostGIS, tu travailles plutôt au niveau “moteur optimisé sur banc d’essai” 😄
 
-5️⃣ Pourquoi c’est important en géomatique ?
+### 5. Pourquoi c’est important en géomatique ?
 
 Parce que GDAL :
 

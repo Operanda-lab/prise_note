@@ -216,8 +216,31 @@ Les logiciels SIG vont stocker ces données vecteurs et rasters dans des fichier
 
 https://georezo.net/wiki/main/donnees/extensions
 
+### rasters
+
 **TIF** : Geotif il embarque nativement les informationhs de georeferencement (encapsulage)
 
 **JPEG2000** : Format compréssé qui embarque aussi le georeferencement
+
+**LAS** : Nuage de points
+
+Finalités des Rasters : 
+- Fond de plan
+- Extraction de valeurs de pixel pour calcul de pente, en télédétection (activité autour de sraster pour extraire des éléments de l'image, bande spectrale (pour des indices de vigeurs de végétation)
+- Vectorisation d'un raster
+
+### vecteurs
+
+Dans un format vectoriel on a un geom et une table attributaire
+
+**SHP**
+
+**GEOJSON**
+
+**GPKG**
+
+**PostGIS**
+
+
 
 
