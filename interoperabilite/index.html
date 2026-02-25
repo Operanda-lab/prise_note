@@ -12,7 +12,7 @@
         <link rel="prev" href="../ia/">
       
       
-        <link rel="next" href="../mp/">
+        <link rel="next" href="../metadonnees/">
       
       
         
@@ -693,12 +693,67 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="LES FORMATS DE DONNEES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rasters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rasters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vecteurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vecteurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadonnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metadonnees
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -973,6 +1028,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    outils VRT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1123,6 +1205,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="LES FORMATS DE DONNEES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rasters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rasters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vecteurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vecteurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1377,8 +1487,20 @@ BBOX=-47.04357705960558178,-65.95729981768334937,76.7429357396055849,58.70921188
 <p>L'information géographique utilisée en géomatique se décline en deux types de données : les données vecteurs et les données rasters.
 Les logiciels SIG vont stocker ces données vecteurs et rasters dans des fichiers dont le format est varié en fonction des logiciels.</p>
 <p>https://georezo.net/wiki/main/donnees/extensions</p>
+<h3 id="rasters">rasters<a class="headerlink" href="#rasters" title="Permanent link">&para;</a></h3>
 <p><strong>TIF</strong> : Geotif il embarque nativement les informationhs de georeferencement (encapsulage)</p>
 <p><strong>JPEG2000</strong> : Format compréssé qui embarque aussi le georeferencement</p>
+<p><strong>LAS</strong> : Nuage de points</p>
+<p>Finalités des Rasters : 
+- Fond de plan
+- Extraction de valeurs de pixel pour calcul de pente, en télédétection (activité autour de sraster pour extraire des éléments de l'image, bande spectrale (pour des indices de vigeurs de végétation)
+- Vectorisation d'un raster</p>
+<h3 id="vecteurs">vecteurs<a class="headerlink" href="#vecteurs" title="Permanent link">&para;</a></h3>
+<p>Dans un format vectoriel on a un geom et une table attributaire</p>
+<p><strong>SHP</strong></p>
+<p><strong>GEOJSON</strong></p>
+<p><strong>GPKG</strong></p>
+<p><strong>PostGIS</strong></p>
 
 
 
@@ -1399,7 +1521,7 @@ Les logiciels SIG vont stocker ces données vecteurs et rasters dans des fichier
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2026-02-20
+    2026-02-25
   </span>
 
     
