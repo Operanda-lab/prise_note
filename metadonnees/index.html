@@ -654,6 +654,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="POUR QUI ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 standards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autre-standard-dcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autre standard : DCAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-metadonnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Création des métadonnées
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1046,6 +1085,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="POUR QUI ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 standards
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autre-standard-dcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autre standard : DCAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-metadonnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Création des métadonnées
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1135,6 +1213,207 @@ Dans une carte, c'est la légende, l'échelle, </p>
 </ul>
 </li>
 </ul>
+<p>Partager de la donnée n'est pas tout simple, il faut créér des métadonnées mais aussi il faut une infra
+Afin de partager </p>
+<p><strong>OPEN DATA SOFT logiciel de métadonnées HUWISE</strong></p>
+<p>logiciel tree </p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>(.venv) idgeo@GS11:/mnt/d/olivier/git_work/prise_note$ tree &gt;&gt; tree.md
+</code></pre></div></td></tr></table></div>
+https://just-sudo-it.be/tree-afficher-larborescence-des-fichiers-et-dossiers/</p>
+<p><img alt="tree" src="../img/tree.jpg" /></p>
+<h3 id="3-standards">3 standards<a class="headerlink" href="#3-standards" title="Permanent link">&para;</a></h3>
+<p>Pour évaluation normes ISO 19115  <strong>QCM</strong></p>
+<ul>
+<li>ISO 19115 : normalise le contenu des métadonnées</li>
+</ul>
+<p>Profil ISO Core 22 éléments qui constitue le noyau dont 7 obligatoires et 15 optionnels
+les 7 répondent au qui quoi, ...</p>
+<ul>
+<li>
+<p>ISO 19139 : normalise la syntaxe xml des métadonnées</p>
+</li>
+<li>
+<p>Catalogue Service for Web (CS-W) : permet d'interroger et lire un géo-catalogue en ligne</p>
+</li>
+</ul>
+<h3 id="autre-standard-dcat">Autre standard : DCAT<a class="headerlink" href="#autre-standard-dcat" title="Permanent link">&para;</a></h3>
+<p>Jean Pommier solution
+https://github.com/pi-geosolutions/vrt2rdf?tab=readme-ov-file#vrt2rdf</p>
+<p><strong>L'ambition de DCAT est de faciliter l'interopérabilité entre les catalogues et les données publiés sur le web.</strong>
+Normalisation pour le Web
+DCAT se base sur une syntaxe RDF (sémantique)</p>
+<p>Derrière il  y a le RDF (reassource description framework) web semantique, c'est un modèle de données <strong>PAS</strong> un format</p>
+<p>Le CNIG participe à la réflexion et a un Groupe de Travail dédié au sujet. On y retrouve les ressources complètes de leur travaux : https://cnig.gouv.fr/metadonnees-r21413.html</p>
+<p>Un projet de mapping du schéma INSPIRE vers DCAT =&gt; https://github.com/cnigfr/metadonnee/tree/main/MappingINSPIRE-DCAT</p>
+<p>On y trouve également un guide de saisie pour remplir des éléments Inspiro Compatibles : http://cnig.gouv.fr/wp-content/uploads/2019/12/Guide-de-saisie-des-%C3%A9l%C3%A9ments-de-m%C3%A9tadonn%C3%A9es-INSPIRE-v2.0-1.pdf</p>
+<h3 id="creation-des-metadonnees">Création des métadonnées<a class="headerlink" href="#creation-des-metadonnees" title="Permanent link">&para;</a></h3>
+<p>Dans le cadre de la norme ENV ISO 19115, les métadonnées portent plus particulièrement sur le contenu :</p>
+<ul>
+<li>
+<p>des informations d'<strong>identification</strong> de la ressource : <strong>intitulé, description, dates de référence, version, résumé, intervenants</strong></p>
+</li>
+<li>
+<p>des informations plus <strong>techniques</strong> : <strong>la description de l'étendue géographique de la ressource, des aperçus, des informations sur les emplois possibles, systèmes de projection ...</strong></p>
+</li>
+<li>
+<p>des informations sur la <strong>qualité</strong>, organisées en :</p>
+<ul>
+<li>
+<p>mesures de qualité relatives aux critères habituels : précision géométrique, temporelle et sémantique, exhaustivité, cohérence logique ;</p>
+</li>
+<li>
+<p>informations de généalogie : description des sources et des processus appliqués aux sources.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>des informations sur les <strong>modalités de diffusion</strong> : <strong>coût de diffusion, modes d'accès, supports, formats, contraintes légales ...</strong></p>
+</li>
+<li>
+<p>des informations sur les <strong>métadonnées</strong> elles mêmes : <strong>date de rédaction, auteur, langue ...</strong></p>
+</li>
+<li>
+<p>IDENTIFICATION</p>
+<p>1.1. Intitulé de la ressource</p>
+</li>
+</ul>
+<p>Nom caractéristique et souvent unique sous lequel la ressource est connue.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.2. Résumé de la ressource
+</code></pre></div></td></tr></table></div>
+<p>Bref résumé narratif du contenu de la ressource.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.3. Type de ressource
+</code></pre></div></td></tr></table></div>
+<p>Type de ressource décrit par les métadonnées.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.4. Localisateur de la ressource
+</code></pre></div></td></tr></table></div>
+<p>Le localisateur de la ressource définit le ou les liens avec la ressource et/ou le lien avec les informations supplémentaires concernant la ressource.</p>
+<p>Le domaine de valeur de cet élément de métadonnées est une chaîne de caractères couramment exprimée sous forme de localisateur de ressource uniforme (Uniform Resource Locator, URL).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.5. Identificateur de ressource unique
+</code></pre></div></td></tr></table></div>
+<p>Une valeur identifiant la ressource de manière unique.</p>
+<p>Le domaine de valeur de cet élément de métadonnées est un code obligatoire sous forme de chaîne de caractères, généralement attribué par le propriétaire des données, et un espace de noms sous forme de chaîne de caractères qui identifie de manière unique le contexte du code d'identification (par exemple le propriétaire des données).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.6. Ressource couplée
+</code></pre></div></td></tr></table></div>
+<p>Si la ressource est un service de données géographiques, cet élément de métadonnées identifie, le cas échéant, la série ou les séries de données géographiques cibles du service grâce à leurs identificateurs de ressource uniques (Unique Resource Identifiers, URI).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>1.7. Langue de la ressource
+</code></pre></div></td></tr></table></div>
+<p>La langue ou les langues utilisées dans le cadre de la ressource</p>
+<ol>
+<li>
+<p>CLASSIFICATION DES DONNÉES ET SERVICES GÉOGRAPHIQUES</p>
+<p>2.1. Catégorie thématique</p>
+</li>
+</ol>
+<p>Ce champ permet de classer la ressource dans une ou plusieurs catégories d'une liste fermée et internationale, facilitant ainsi la recherche de cette donnée. Il est important d'associer la ressource à la (ou les) thématique la plus pertinente.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>2.2. Type de service de données géographiques
+</code></pre></div></td></tr></table></div>
+<p>Cas habituels :</p>
+<p>Un service CSW est un « service de recherche »,</p>
+<p>un service WMS est un « service de consultation »</p>
+<p>et un service WFS est un « service de téléchargement ».</p>
+<p>Un service WPS faisant du géotraitement (par exemple : chaînage de d'éléments hydrographiques ou croisement de couche) sera de type « autre ».</p>
+<ol>
+<li>MOT CLÉ</li>
+</ol>
+<p>Liste de mots-clés (s'inspirer du site https://www.eionet.europa.eu/gemet/en/inspire-themes/)</p>
+<ol>
+<li>
+<p>SITUATION GÉOGRAPHIQUE</p>
+<p>4.1. Rectangle de délimitation géographique</p>
+</li>
+</ol>
+<p>Étendue de la ressource dans l'espace géographique, exprimée sous la forme d'un rectangle de délimitation.</p>
+<p>Ce rectangle de délimitation est défini par les longitudes est et ouest et les latitudes sud et nord en degrés décimaux, avec une précision d'au moins deux chiffres après la virgule.</p>
+<ol>
+<li>
+<p>RÉFÉRENCE TEMPORELLE
+Au moins un des éléments de métadonnées indiqués aux points 5.1 à 5.4 devra être fourni.</p>
+<p>5.1. Étendue temporelle</p>
+</li>
+</ol>
+<p>L'étendue temporelle définit la période de temps couverte par le contenu de la ressource. Cette période peut être exprimée de l'une des manières suivantes:</p>
+<p>une date déterminée,</p>
+<p>un intervalle de dates exprimé par la date de début et la date de fin de l'intervalle,</p>
+<p>un mélange de dates et d'intervalles.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5.2. Date de publication
+</code></pre></div></td></tr></table></div>
+<p>Date de publication de la ressource lorsqu'elle est disponible ou date d'entrée en vigueur. Il peut y avoir plus d'une date de publication.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5.3. Date de dernière révision
+</code></pre></div></td></tr></table></div>
+<p>Date de la dernière révision de la ressource, si la ressource a été révisée. Il ne doit pas y avoir plus d'une date de dernière révision.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>5.4. Date de création
+</code></pre></div></td></tr></table></div>
+<p>Date de création de la ressource. Il ne doit pas y avoir plus d'une date de création.</p>
+<ol>
+<li>
+<p>QUALITÉ ET VALIDITÉ</p>
+<p>6.1. Généalogie</p>
+</li>
+</ol>
+<p>La généalogie fait état de l'historique du traitement et/ou de la qualité générale de la série de données géographiques.</p>
+<p>Le cas échéant, elle peut inclure une information indiquant si la série de données a été validée ou soumise à un contrôle de qualité, s'il s'agit de la version officielle (dans le cas où il existe plusieurs versions) et si elle a une valeur légale.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>6.2. Résolution spatiale
+</code></pre></div></td></tr></table></div>
+<p>La résolution spatiale se rapporte au niveau de détail de la série de données. Elle est exprimée comme un ensemble de valeurs de distance de résolution allant de zéro à plusieurs valeurs (normalement utilisé pour des données maillées et des produits dérivés d'imagerie) ou exprimée en échelles équivalentes (habituellement utilisées pour les cartes ou les produits dérivés de cartes).</p>
+<ol>
+<li>
+<p>CONFORMITÉ
+Les exigences en ce qui concerne la conformité et le degré de conformité avec les règles de mise en œuvre adoptées par INSPIRE:</p>
+<p>7.1. Spécification</p>
+</li>
+</ol>
+<p>Indication de la référence des règles de mise en œuvre de la directive ou des autres spécifications auxquelles une ressource particulière est conforme.</p>
+<p>Une ressource peut être conforme à plusieurs règles de mise en œuvre adoptées par la directive ou à d'autres spécifications.</p>
+<p>Cette indication inclut au moins le titre et une date de référence (date de publication, date de dernière révision ou de création) des règles de mise en oeuvre adoptées par la directive ou des autres spécifications auxquelles la ressource est conforme.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>7.2. Degré
+</code></pre></div></td></tr></table></div>
+<p>Degré de conformité de la ressource par rapport aux règles de mise en œuvre adoptées par la directive ou à d'autres spécifications.</p>
+<ol>
+<li>CONTRAINTES EN MATIÈRE D'ACCÈS ET D'UTILISATION</li>
+</ol>
+<p>Une contrainte en matière d'accès et d'utilisation peut être l'un des deux éléments suivants ou les deux :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>8.1. Conditions applicables à l&#39;accès et à l&#39;utilisation
+</code></pre></div></td></tr></table></div>
+<p>Cet élément de métadonnées définit les conditions applicables à l'accès et à l'utilisation des séries et des services de données géographiques, et, le cas échéant, les frais correspondants.</p>
+<p>Cet élément doit avoir des valeurs. Si aucune condition ne s'applique à l'accès à la ressource et à son utilisation, on utilisera la mention «aucune condition ne s'applique». Si les conditions sont inconnues, on utilisera la mention «conditions inconnues».</p>
+<p>Cet élément fournira aussi des informations sur tout frais éventuel à acquitter pour avoir accès à la ressource et l'utiliser, le cas échéant, ou fera référence à un localisateur de ressource uniforme (Uniform Resource Locator, URL) où il sera possible de trouver des informations sur les frais.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>8.2. Restrictions concernant l&#39;accès public
+</code></pre></div></td></tr></table></div>
+<p>Lorsque les producteurs restreignent l'accès public aux séries et aux services de données géographiques, cet élément de métadonnées fournit des informations sur les restrictions et les raisons de celles-ci.</p>
+<p>S'il n'y a pas de restrictions concernant l'accès public, cet élément de métadonnées l'indiquera.</p>
+<ol>
+<li>
+<p>ORGANISATIONS RESPONSABLES DE L'ÉTABLISSEMENT, DE LA GESTION, DE LA MAINTENANCE ET DE LA DIFFUSION DES SÉRIES ET DES SERVICES DE DONNÉES GÉOGRAPHIQUES</p>
+<p>9.1. Partie responsable</p>
+</li>
+</ol>
+<p>Description de l'organisation responsable de l'établissement, de la gestion, de la maintenance et de la diffusion de la ressource.</p>
+<p>Cette description inclut:</p>
+<p>description sous forme de texte libre,</p>
+<p>une adresse e-mail de contact sous la forme d'une chaîne de caractères.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>9.2. Rôle de la partie responsable
+</code></pre></div></td></tr></table></div>
+<p>Fonction de l'organisation responsable.</p>
+<p>La norme EN ISO 19115 identifie les responsabilités élémentaires suivantes : le fournisseur, le gestionnaire, le propriétaire, l'utilisateur, le distributeur, le commanditaire, le point de contact, le maître d’œuvre principal (ou d'ensemble), l'exécutant secondaire, l'éditeur et l'auteur.</p>
+<p>Ces responsabilités élémentaires recouvrent d'autres notions très utilisées en France, notamment :</p>
+<p>Le maître d'ouvrage correspond généralement au commanditaire de la ressource et peut accessoirement en être le propriétaire ;</p>
+<p>Le producteur en tant que fabricant correspond au maître d’œuvre principal ;</p>
+<p>L'intégrateur de la ressource peut correspondre au gestionnaire et/ou maître d’œuvre principal de la ressource.</p>
+<ol>
+<li>
+<p>MÉTADONNÉES CONCERNANT LES MÉTADONNÉES</p>
+<p>10.1. Point de contact des métadonnées</p>
+</li>
+</ol>
+<p>Description de l'organisation responsable de la création et de la maintenance des métadonnées. Cette description inclut:</p>
+<p>le nom de l'organisation sous forme de texte libre,</p>
+<p>une adresse e-mail de contact sous la forme d'une chaîne de caractères.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>10.2. Date des métadonnées
+</code></pre></div></td></tr></table></div>
+<p>Date à laquelle l'enregistrement de métadonnées a été créé ou actualisé.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>10.3. Langue des métadonnées
+</code></pre></div></td></tr></table></div>
+<p>C'est la langue dans laquelle les éléments de métadonnées sont exprimés</p>
 
 
 
