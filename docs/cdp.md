@@ -1,6 +1,7 @@
-# Définition
+# Chef de projet
+## Définition
 
-## Les postes
+### Les postes
 
 - Equipe projet sont les membres de l'équipe qui sont responsables de :
 
@@ -28,7 +29,7 @@
 - Directeur de production ou opérationel
 
 
-## Les méthodologies projets
+### Les méthodologies projets
 
 - Cycle en V
 - Agile

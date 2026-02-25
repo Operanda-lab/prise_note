@@ -1,20 +1,4 @@
-# [Chef de projet](./cdp.md)
-## Définition
-
-- Les postes
-
-	- Equipe projet
-	- Chef de projet
-	- Directeur de projet
-	- Directeur de production ou opérationel
-
-- Les méthodologies
-
-	- Cycle en V
-	- Agile
-	- La méthode scrum
-	- User story
-	- Devops
+## [Chef de projet](./cdp.md)
 
 ## [Marché public](./mp.md "Marchés publics")
 
