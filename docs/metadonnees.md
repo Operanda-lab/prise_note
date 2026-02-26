@@ -126,47 +126,47 @@ Dans le cadre de la norme ENV ISO 19115, les métadonnées portent plus particul
 
 - des informations sur les **métadonnées** elles mêmes : **date de rédaction, auteur, langue ...**
 
-1. IDENTIFICATION
+### 1. IDENTIFICATION
 
-	1.1. Intitulé de la ressource
+#### 1.1. Intitulé de la ressource
 
 Nom caractéristique et souvent unique sous lequel la ressource est connue.
 
-	1.2. Résumé de la ressource
+#### 1.2. Résumé de la ressource
 
 Bref résumé narratif du contenu de la ressource.
 
-	1.3. Type de ressource
+#### 1.3. Type de ressource
 
 Type de ressource décrit par les métadonnées.
 
-	1.4. Localisateur de la ressource
+#### 1.4. Localisateur de la ressource
 
 Le localisateur de la ressource définit le ou les liens avec la ressource et/ou le lien avec les informations supplémentaires concernant la ressource.
 
 Le domaine de valeur de cet élément de métadonnées est une chaîne de caractères couramment exprimée sous forme de localisateur de ressource uniforme (Uniform Resource Locator, URL).
 
-	1.5. Identificateur de ressource unique
+#### 	1.5. Identificateur de ressource unique
 
 Une valeur identifiant la ressource de manière unique.
 
 Le domaine de valeur de cet élément de métadonnées est un code obligatoire sous forme de chaîne de caractères, généralement attribué par le propriétaire des données, et un espace de noms sous forme de chaîne de caractères qui identifie de manière unique le contexte du code d'identification (par exemple le propriétaire des données).
 
-	1.6. Ressource couplée
+#### 1.6. Ressource couplée
 
 Si la ressource est un service de données géographiques, cet élément de métadonnées identifie, le cas échéant, la série ou les séries de données géographiques cibles du service grâce à leurs identificateurs de ressource uniques (Unique Resource Identifiers, URI).
 
-	1.7. Langue de la ressource
+#### 1.7. Langue de la ressource
 
 La langue ou les langues utilisées dans le cadre de la ressource
 
-2. CLASSIFICATION DES DONNÉES ET SERVICES GÉOGRAPHIQUES
+### 2. CLASSIFICATION DES DONNÉES ET SERVICES GÉOGRAPHIQUES
 
-	2.1. Catégorie thématique
+#### 2.1. Catégorie thématique
 
 Ce champ permet de classer la ressource dans une ou plusieurs catégories d'une liste fermée et internationale, facilitant ainsi la recherche de cette donnée. Il est important d'associer la ressource à la (ou les) thématique la plus pertinente.
 
-	2.2. Type de service de données géographiques
+#### 2.2. Type de service de données géographiques
 
 Cas habituels :
 
@@ -178,22 +178,25 @@ et un service WFS est un « service de téléchargement ».
 
 Un service WPS faisant du géotraitement (par exemple : chaînage de d'éléments hydrographiques ou croisement de couche) sera de type « autre ».
 
-3. MOT CLÉ
+### 3. MOT CLÉ
 
 Liste de mots-clés (s'inspirer du site https://www.eionet.europa.eu/gemet/en/inspire-themes/)
 
-4. SITUATION GÉOGRAPHIQUE
+### 4. SITUATION GÉOGRAPHIQUE
 	
-	4.1. Rectangle de délimitation géographique
+#### 4.1. Rectangle de délimitation géographique
 
 Étendue de la ressource dans l'espace géographique, exprimée sous la forme d'un rectangle de délimitation.
+La bbox est souvent en WGS84 alors 
 
 Ce rectangle de délimitation est défini par les longitudes est et ouest et les latitudes sud et nord en degrés décimaux, avec une précision d'au moins deux chiffres après la virgule.
 
-5. RÉFÉRENCE TEMPORELLE
+On peut récupérer avec OGRINFO ou QGIS
+
+### 5. RÉFÉRENCE TEMPORELLE
 Au moins un des éléments de métadonnées indiqués aux points 5.1 à 5.4 devra être fourni.
 
-	5.1. Étendue temporelle
+#### 5.1. Étendue temporelle
 
 L'étendue temporelle définit la période de temps couverte par le contenu de la ressource. Cette période peut être exprimée de l'une des manières suivantes:
 
@@ -203,34 +206,34 @@ un intervalle de dates exprimé par la date de début et la date de fin de l'int
 
 un mélange de dates et d'intervalles.
 
-	5.2. Date de publication
+#### 5.2. Date de publication
 
 Date de publication de la ressource lorsqu'elle est disponible ou date d'entrée en vigueur. Il peut y avoir plus d'une date de publication.
 
-	5.3. Date de dernière révision
+#### 5.3. Date de dernière révision
 
 Date de la dernière révision de la ressource, si la ressource a été révisée. Il ne doit pas y avoir plus d'une date de dernière révision.
 
-	5.4. Date de création
+#### 5.4. Date de création
 
 Date de création de la ressource. Il ne doit pas y avoir plus d'une date de création.
 
-6. QUALITÉ ET VALIDITÉ
+### 6. QUALITÉ ET VALIDITÉ
 
-	6.1. Généalogie
+#### 6.1. Généalogie
 
 La généalogie fait état de l'historique du traitement et/ou de la qualité générale de la série de données géographiques.
 
 Le cas échéant, elle peut inclure une information indiquant si la série de données a été validée ou soumise à un contrôle de qualité, s'il s'agit de la version officielle (dans le cas où il existe plusieurs versions) et si elle a une valeur légale.
 
-	6.2. Résolution spatiale
+#### 6.2. Résolution spatiale
 
 La résolution spatiale se rapporte au niveau de détail de la série de données. Elle est exprimée comme un ensemble de valeurs de distance de résolution allant de zéro à plusieurs valeurs (normalement utilisé pour des données maillées et des produits dérivés d'imagerie) ou exprimée en échelles équivalentes (habituellement utilisées pour les cartes ou les produits dérivés de cartes).
 
-7. CONFORMITÉ
+### 7. CONFORMITÉ
 Les exigences en ce qui concerne la conformité et le degré de conformité avec les règles de mise en œuvre adoptées par INSPIRE:
 
-	7.1. Spécification
+#### 7.1. Spécification
 
 Indication de la référence des règles de mise en œuvre de la directive ou des autres spécifications auxquelles une ressource particulière est conforme.
 
@@ -238,15 +241,15 @@ Une ressource peut être conforme à plusieurs règles de mise en œuvre adopté
 
 Cette indication inclut au moins le titre et une date de référence (date de publication, date de dernière révision ou de création) des règles de mise en oeuvre adoptées par la directive ou des autres spécifications auxquelles la ressource est conforme.
 
-	7.2. Degré
+#### 7.2. Degré
 
 Degré de conformité de la ressource par rapport aux règles de mise en œuvre adoptées par la directive ou à d'autres spécifications.
 
-8. CONTRAINTES EN MATIÈRE D'ACCÈS ET D'UTILISATION
+### 8. CONTRAINTES EN MATIÈRE D'ACCÈS ET D'UTILISATION
 
 Une contrainte en matière d'accès et d'utilisation peut être l'un des deux éléments suivants ou les deux :
 
-	8.1. Conditions applicables à l'accès et à l'utilisation
+#### 8.1. Conditions applicables à l'accès et à l'utilisation
 
 Cet élément de métadonnées définit les conditions applicables à l'accès et à l'utilisation des séries et des services de données géographiques, et, le cas échéant, les frais correspondants.
 
@@ -254,15 +257,15 @@ Cet élément doit avoir des valeurs. Si aucune condition ne s'applique à l'acc
 
 Cet élément fournira aussi des informations sur tout frais éventuel à acquitter pour avoir accès à la ressource et l'utiliser, le cas échéant, ou fera référence à un localisateur de ressource uniforme (Uniform Resource Locator, URL) où il sera possible de trouver des informations sur les frais.
 
-	8.2. Restrictions concernant l'accès public
+#### 8.2. Restrictions concernant l'accès public
 
 Lorsque les producteurs restreignent l'accès public aux séries et aux services de données géographiques, cet élément de métadonnées fournit des informations sur les restrictions et les raisons de celles-ci.
 
 S'il n'y a pas de restrictions concernant l'accès public, cet élément de métadonnées l'indiquera.
 
-9. ORGANISATIONS RESPONSABLES DE L'ÉTABLISSEMENT, DE LA GESTION, DE LA MAINTENANCE ET DE LA DIFFUSION DES SÉRIES ET DES SERVICES DE DONNÉES GÉOGRAPHIQUES
+### 9. ORGANISATIONS RESPONSABLES DE L'ÉTABLISSEMENT, DE LA GESTION, DE LA MAINTENANCE ET DE LA DIFFUSION DES SÉRIES ET DES SERVICES DE DONNÉES GÉOGRAPHIQUES
 
-	9.1. Partie responsable
+#### 9.1. Partie responsable
 
 Description de l'organisation responsable de l'établissement, de la gestion, de la maintenance et de la diffusion de la ressource.
 
@@ -272,7 +275,7 @@ description sous forme de texte libre,
 
 une adresse e-mail de contact sous la forme d'une chaîne de caractères.
 
-	9.2. Rôle de la partie responsable
+#### 9.2. Rôle de la partie responsable
 
 Fonction de l'organisation responsable.
 
@@ -286,9 +289,9 @@ Le producteur en tant que fabricant correspond au maître d’œuvre principal ;
 
 L'intégrateur de la ressource peut correspondre au gestionnaire et/ou maître d’œuvre principal de la ressource.
 
-10. MÉTADONNÉES CONCERNANT LES MÉTADONNÉES
+### 10. MÉTADONNÉES CONCERNANT LES MÉTADONNÉES
 
-	10.1. Point de contact des métadonnées
+#### 10.1. Point de contact des métadonnées
 
 Description de l'organisation responsable de la création et de la maintenance des métadonnées. Cette description inclut:
 
@@ -296,11 +299,80 @@ le nom de l'organisation sous forme de texte libre,
 
 une adresse e-mail de contact sous la forme d'une chaîne de caractères.
 
-	10.2. Date des métadonnées
+#### 	10.2. Date des métadonnées
 
 Date à laquelle l'enregistrement de métadonnées a été créé ou actualisé.
 
-	10.3. Langue des métadonnées
+#### 	10.3. Langue des métadonnées
 
 C'est la langue dans laquelle les éléments de métadonnées sont exprimés
+
+
+### 11.. autres
+
+|NOM|TYPE|SPEC
+|---|:-:|--:
+|ID|Num|Auto-implémentation
+|DESC|Text(100)|Liste valeur
+|GEOM|Polygon, 3857|
+
+
+## OUTILS
+https://www.tablesgenerator.com/markdown_tables
+### Outils de catalogage
+
+#### GeoNetwork
+publication des données et métadonnées au format web service.
+
+GeoNetwork est une solution de catalogage Open Source de gestion des métadonnées SIG en mode client / serveur. Elle se base sur de nombreuses normes internationales pour le stockage et l'échange de métadonnées (ISO, OGC, etc.). C'est une application en très fort développement et disposant d'une communauté grandissante. 
+
+#### CKAN : Compréhensive Knowledge Archive Network
+Un solution très utilisée pour les portails open-data
+
+#### UDATA https://udata.readthedocs.io/en/stable/quickstart/
+
+#### Comment se retrouver dans l'immensité des catalogues de données ?
+
+
+
+	Laurent Jégou Enseignant / Chercheur de
+	l'université de Toulouse 2 vient de publier
+	un travail collaboratif avec la parution récente du	site « Sources de données pour le diagnostic teritorial » 
+
+****https://www.geotests.net/donnees_diag/****
+****https://files.opendatarchives.fr/**** de [Chirstian Quest](https://www.cquest.org/cq/)
+
+### Outils de création de métadonnées
+
+#### Plume (QGIS) +++++
+https://snum.scenari-community.org/Plume/Documentation/index.html#Installation
+
+https://spote.developpement-durable.gouv.fr/offre/plume-metadonnees-d-un-patrimoine-postgresql
+
+Repo du ministère  : https://piece-jointe-carto.developpement-durable.gouv.fr/NAT002/QGIS/plugins/plugins.xml
+
+https://github.com/MTES-MCT/metadata-postgresql/releases
+
+#### Pgmetadata (QGIS) +++
+
+## Catalogue
+
+Les catalogues Open Data : des catalogues simples
+Des métadonnées simplifiées
+
+Une gestion des droits simplifiée (données ouvertes)
+
+Plus orientés donnée
+
+Proposent souvent de la dataviz
+
+Solutions Open-Source : CKAN, uData
+
+Solutions propriétaires : OpenDataSoft, Isogeo ?
+
+ex. http://data.gouv.fr
+
+Ou la flambante version béta https://cartes.gouv.fr/catalogue/search
+
+
 

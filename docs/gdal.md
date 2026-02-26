@@ -88,23 +88,23 @@ Toi, avec PostGIS, tu travailles plutôt au niveau “moteur optimisé sur banc 
 
 Parce que GDAL :
 
-supporte des centaines de formats
+- supporte des centaines de formats
 
-est écrit en C/C++
+- est écrit en C/C++
 
-est ultra performant
+- est ultra performant
 
-est la base de presque tous les outils SIG modernes
+- est la base de presque tous les outils SIG modernes
 
 Sans GDAL :
 
-pas de QGIS
+- pas de QGIS
 
-pas de conversion massive de formats
+- pas de conversion massive de formats
 
-pas de raster reprojection rapide
+- pas de raster reprojection rapide
 
-6️⃣ Est-ce vraiment “bas niveau” ?
+### 6. Est-ce vraiment “bas niveau” ?
 
 Ça dépend du point de vue :
 
@@ -115,7 +115,7 @@ Utilisateur QGIS	Très bas niveau
 
 Donc le terme est relatif.
 
-7️⃣ Pourquoi ça peut te parler particulièrement
+### 7. Pourquoi ça peut te parler particulièrement
 
 Vu ton projet tiny house avec vues matérialisées en PostGIS :
 
@@ -130,3 +130,27 @@ tu comprends les couches
 tu ne passes pas par une abstraction magique
 
 Et comme tu aimes comprendre avant d’automatiser (je me souviens 😉), apprendre GDAL, c’est comme comprendre le BIOS avant d’écrire l’OS.
+
+
+## CLI = Le mode ligne de commande dans une console
+
+on peut utiliser mv pour déplacer mais aussi pour renommer
+
+## PSQL
+Rentrer dans psql
+
+```bash
+sudo apt install postgresql-client-16
+psql -h 192.168.10.1 -p 15432 -U editeur -d olivier
+```
+liste des métacommandes "\..." ici : https://www.postgresql.org/docs/current/app-psql.html
+
+## GDAL / OGR - Le géomagicien en ligne de commande
+
+C'est la base de tous nos logiciels 
+librairie libre attaquable depuis python, bash, R etc ...
+https://gdal.org/en/stable/
+
+dans linux ca marche bien
+
+
