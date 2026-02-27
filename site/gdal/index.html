@@ -273,7 +273,7 @@
   <span class="md-ellipsis">
     
   
-    Aj
+    Aspects juridiques
   
 
     
@@ -577,8 +577,63 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6-est-ce-vraiment-bas-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Est-ce vraiment “bas niveau” ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-pourquoi-ca-peut-te-parler-particulierement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Pourquoi ça peut te parler particulièrement
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-le-mode-ligne-de-commande-dans-une-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI = Le mode ligne de commande dans une console
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdal-ogr-le-geomagicien-en-ligne-de-commande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GDAL / OGR - Le géomagicien en ligne de commande
+      
+    </span>
+  </a>
   
 </li>
       
@@ -705,6 +760,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../ogr_et_vrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation rapide de la librairie GDAL/OGR et du format VRT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../openig/" class="md-nav__link">
         
   
@@ -759,6 +841,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../plume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plume
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../postgis/" class="md-nav__link">
         
   
@@ -794,6 +903,33 @@
     
   
     Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../script_auto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatisation script bash
   
 
     
@@ -1059,8 +1195,63 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6-est-ce-vraiment-bas-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Est-ce vraiment “bas niveau” ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-pourquoi-ca-peut-te-parler-particulierement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Pourquoi ça peut te parler particulièrement
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-le-mode-ligne-de-commande-dans-une-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLI = Le mode ligne de commande dans une console
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdal-ogr-le-geomagicien-en-ligne-de-commande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GDAL / OGR - Le géomagicien en ligne de commande
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1152,22 +1343,40 @@ gdf = gpd.read_file(&quot;parcelles.shp&quot;)
 <p>Toi, avec PostGIS, tu travailles plutôt au niveau “moteur optimisé sur banc d’essai” 😄</p>
 <h3 id="5-pourquoi-cest-important-en-geomatique">5. Pourquoi c’est important en géomatique ?<a class="headerlink" href="#5-pourquoi-cest-important-en-geomatique" title="Permanent link">&para;</a></h3>
 <p>Parce que GDAL :</p>
+<ul>
+<li>
 <p>supporte des centaines de formats</p>
+</li>
+<li>
 <p>est écrit en C/C++</p>
+</li>
+<li>
 <p>est ultra performant</p>
+</li>
+<li>
 <p>est la base de presque tous les outils SIG modernes</p>
+</li>
+</ul>
 <p>Sans GDAL :</p>
+<ul>
+<li>
 <p>pas de QGIS</p>
+</li>
+<li>
 <p>pas de conversion massive de formats</p>
+</li>
+<li>
 <p>pas de raster reprojection rapide</p>
-<p>6️⃣ Est-ce vraiment “bas niveau” ?</p>
+</li>
+</ul>
+<h3 id="6-est-ce-vraiment-bas-niveau">6. Est-ce vraiment “bas niveau” ?<a class="headerlink" href="#6-est-ce-vraiment-bas-niveau" title="Permanent link">&para;</a></h3>
 <p>Ça dépend du point de vue :</p>
 <p>Contexte    Niveau
 Développeur C++ Moyen niveau
 Data scientist Python   Bas niveau
 Utilisateur QGIS    Très bas niveau</p>
 <p>Donc le terme est relatif.</p>
-<p>7️⃣ Pourquoi ça peut te parler particulièrement</p>
+<h3 id="7-pourquoi-ca-peut-te-parler-particulierement">7. Pourquoi ça peut te parler particulièrement<a class="headerlink" href="#7-pourquoi-ca-peut-te-parler-particulierement" title="Permanent link">&para;</a></h3>
 <p>Vu ton projet tiny house avec vues matérialisées en PostGIS :</p>
 <p>Tu as déjà une approche “structure interne des données”.</p>
 <p>GDAL est dans la même logique :</p>
@@ -1175,6 +1384,20 @@ Utilisateur QGIS    Très bas niveau</p>
 <p>tu comprends les couches</p>
 <p>tu ne passes pas par une abstraction magique</p>
 <p>Et comme tu aimes comprendre avant d’automatiser (je me souviens 😉), apprendre GDAL, c’est comme comprendre le BIOS avant d’écrire l’OS.</p>
+<h2 id="cli-le-mode-ligne-de-commande-dans-une-console">CLI = Le mode ligne de commande dans une console<a class="headerlink" href="#cli-le-mode-ligne-de-commande-dans-une-console" title="Permanent link">&para;</a></h2>
+<p>on peut utiliser mv pour déplacer mais aussi pour renommer</p>
+<h2 id="psql">PSQL<a class="headerlink" href="#psql" title="Permanent link">&para;</a></h2>
+<p>Rentrer dans psql</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql-client-16
+psql<span class="w"> </span>-h<span class="w"> </span><span class="m">192</span>.168.10.1<span class="w"> </span>-p<span class="w"> </span><span class="m">15432</span><span class="w"> </span>-U<span class="w"> </span>editeur<span class="w"> </span>-d<span class="w"> </span>olivier
+</code></pre></div></td></tr></table></div>
+liste des métacommandes "..." ici : https://www.postgresql.org/docs/current/app-psql.html</p>
+<h2 id="gdal-ogr-le-geomagicien-en-ligne-de-commande">GDAL / OGR - Le géomagicien en ligne de commande<a class="headerlink" href="#gdal-ogr-le-geomagicien-en-ligne-de-commande" title="Permanent link">&para;</a></h2>
+<p>C'est la base de tous nos logiciels 
+librairie libre attaquable depuis python, bash, R etc ...
+https://gdal.org/en/stable/</p>
+<p>dans linux ca marche bien</p>
 
 
 
@@ -1195,7 +1418,7 @@ Utilisateur QGIS    Très bas niveau</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2026-02-25
+    2026-02-26
   </span>
 
     

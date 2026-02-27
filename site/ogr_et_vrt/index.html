@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../postgis/">
+        <link rel="prev" href="../mp/">
       
       
-        <link rel="next" href="../script_auto/">
+        <link rel="next" href="../openig/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Python - Prise de note CPGEOM 25-27</title>
+        <title>Présentation rapide de la librairie GDAL/OGR et du format VRT - Prise de note CPGEOM 25-27</title>
       
     
     
@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#presentation-rapide-de-la-librairie-gdalogr-et-du-format-vrt" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python
+              Présentation rapide de la librairie GDAL/OGR et du format VRT
             
           </span>
         </div>
@@ -582,10 +587,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ogr_et_vrt/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation rapide de la librairie GDAL/OGR et du format VRT
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -601,6 +633,98 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gdalogr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GDAL/OGR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VRT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VRT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-exemple-de-fichier-vrt-simple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Un exemple de fichier VRT simple
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-explique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple expliqué
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-de-fonctionnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions de fonctionnement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtenir-un-vrt-de-depart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtenir un VRT de départ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -717,17 +841,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
         
   
   
@@ -743,7 +860,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -954,6 +1070,88 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gdalogr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GDAL/OGR
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VRT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VRT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-exemple-de-fichier-vrt-simple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Un exemple de fichier VRT simple
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-explique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple expliqué
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conditions-de-fonctionnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conditions de fonctionnement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtenir-un-vrt-de-depart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtenir un VRT de départ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -970,9 +1168,115 @@
 
 
 
-  <h1>Python</h1>
-
-
+<h1 id="presentation-rapide-de-la-librairie-gdalogr-et-du-format-vrt">Présentation rapide de la librairie GDAL/OGR et du format VRT<a class="headerlink" href="#presentation-rapide-de-la-librairie-gdalogr-et-du-format-vrt" title="Permanent link">&para;</a></h1>
+<h2 id="gdalogr">GDAL/OGR<a class="headerlink" href="#gdalogr" title="Permanent link">&para;</a></h2>
+<ul>
+<li>https://gdal.org/</li>
+<li>Une librairie <em>opensource</em>, largement utilisée (sous le capot) par de nombreux outils y compris propriétaires</li>
+<li>Traitement de données géospatiales</li>
+<li>Essentiellement des supports entrées/sortie : un nombre incroyable de formats supportés</li>
+<li>Des outils en ligne de commande :</li>
+<li>Support raster : <a href="https://gdal.org/programs/index.html#raster-programs">GDAL</a></li>
+<li>Support Vecteur : <a href="https://gdal.org/programs/index.html#vector-programs">OGR</a></li>
+<li>A noter l'arrivée d'une refonte massive des commandes GDAL/OGR à partir de GDAL 3.12 : <a href="https://gdal.org/en/stable/programs/index.html#gdal-application">application gdal</a></li>
+</ul>
+<h2 id="vrt">VRT<a class="headerlink" href="#vrt" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Un format interne de GDAL/OGR</li>
+<li>Plus connu pour sa version raster, mais <strong>existe aussi pour des données vectorielles et tabulaires</strong> : </li>
+<li>https://gdal.org/drivers/vector/vrt.html</li>
+<li>OGR VRT, ça vous permet notamment de :</li>
+<li>Faire l’économie d’un ETL</li>
+<li>Autonomiser vos collègues amateurs d’Excel (et donc alléger votre charge de travail)</li>
+<li>Augmenter la reproductibilité de vos flux de traitement de données</li>
+<li>Automatiser vos flux de traitement de données</li>
+<li>Frimer pendant une soirée (de géomaticiens)</li>
+<li>Supporté par QGIS</li>
+<li>Pas limité aux données tabulaires, loin de là. Mais les supporte</li>
+<li>Fichier XML, de configuration de la source de données. Permet de :</li>
+<li>renommer des champs</li>
+<li>changer le type des champs (entier, réel, date, texte)</li>
+<li>ne conserver qu’un sous-ensemble des champs</li>
+<li>choisir les champs définissant la géométrie (si présents)</li>
+<li>filtrer le jeu de données via une requête SQL</li>
+<li>découper sur une étendue via une requête SQL</li>
+<li>reprojeter un jeu de données</li>
+<li>fusionner plusieurs sources</li>
+<li>charger des sources de données en ligne</li>
+</ul>
+<h3 id="un-exemple-de-fichier-vrt-simple">Un exemple de fichier VRT simple<a class="headerlink" href="#un-exemple-de-fichier-vrt-simple" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="imgs/screenshot1.png" title="vrt simple" /></p>
+<h3 id="exemple-explique">Exemple expliqué<a class="headerlink" href="#exemple-explique" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="imgs/screenshot2.png" title="vrt simple expliqué" /></p>
+<ul>
+<li>On définit la source de données</li>
+<li>On renomme les champs</li>
+<li>On publie le VRT (via QGIS ou ogr2ogr)</li>
+</ul>
+<h3 id="conditions-de-fonctionnement">Conditions de fonctionnement<a class="headerlink" href="#conditions-de-fonctionnement" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Encodage UTF-8</li>
+<li>Pas de fusion de cellules</li>
+<li>Une vraie donnée tabulaire (pas de mise en forme)</li>
+</ul>
+<h3 id="obtenir-un-vrt-de-depart">Obtenir un VRT de départ<a class="headerlink" href="#obtenir-un-vrt-de-depart" title="Permanent link">&para;</a></h3>
+<p>Pour créer votre fichier VRT, vous avez le choix. Vous pouvez :</p>
+<ul>
+<li>L’écrire à la main, grâce à la doc (vite pénible)</li>
+<li>Le générer via QGIS et l’extension Spreadsheet Layer : génère un fichier VRT à côté du fichier ouvert. Supporte XLS, XSLX, ODS, CSV</li>
+<li>Le générer en ligne de commande via <a href="https://github.com/jeanpommier/ogr2vrt_simple">ogr2vrt_simple</a></li>
+<li>Depuis GDAL 3.6, un script ogr2vrt est livré avec la librairie, <em>mais il faut le trouver car il n'est pas mis en avant (et un chouilla limité à mon goût)</em>.</li>
+</ul>
+<h1 id="quelques-astuces-avec-ogr">Quelques astuces avec OGR<a class="headerlink" href="#quelques-astuces-avec-ogr" title="Permanent link">&para;</a></h1>
+<h2 id="ogrinfo-inspecter-une-donnee-vecteur">ogrinfo : inspecter une donnée vecteur<a class="headerlink" href="#ogrinfo-inspecter-une-donnee-vecteur" title="Permanent link">&para;</a></h2>
+<p>Sans option, ogrinfo renvoie très peu d'infos. La liste des couches contenues par la source de données</p>
+<p>J'aime souvent récupérer plus d'infos que ça, mais pas trop. </p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ogrinfo -so -al macouche.gpkg
+</code></pre></div></td></tr></table></div>
+marche bien</p>
+<p>L'air de rien, ça vous permet de récupérer pas mal d'infos, sans avoir à ouvrir QGIS, charger la couche, ouvrir les propriétés etc : ouvrez une ligne de commande, et vous pouvez inspecter votre donnée, après chaque changement, facilement, sans toucher la souris.</p>
+<h3 id="executer-des-commandes-sql">Exécuter des commandes sql<a class="headerlink" href="#executer-des-commandes-sql" title="Permanent link">&para;</a></h3>
+<p>On peut aussi exécuter des commandes SQL sur une couche de données. Par exemple, un truc du genre : 
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ogrinfo -al -where &quot;NAME10 LIKE &#39;%NY&#39;&quot; tl_2013_us_uac10.shp
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ogrinfo -al -sql &quot;SELECT * FROM tl_2013_us_uac10 WHERE UACE10 = &#39;16171&#39;&quot; tl_2013_us_uac10.shp
+</code></pre></div></td></tr></table></div></p>
+<h2 id="ogr2ogr-le-couteau-suisse">ogr2ogr : le couteau suisse<a class="headerlink" href="#ogr2ogr-le-couteau-suisse" title="Permanent link">&para;</a></h2>
+<p>On peut presque tout faire avec ogr2ogr. Voir <a href="https://gdal.org/programs/ogr2ogr.html">la doc</a>, c'est important.</p>
+<p>QQ commandes très fréquemment utilisées (par moi en tous cas) : </p>
+<h3 id="afficher-dans-la-console-le-contenu-de-la-couche">Afficher dans la console le contenu de la couche<a class="headerlink" href="#afficher-dans-la-console-le-contenu-de-la-couche" title="Permanent link">&para;</a></h3>
+<p>Pratique pour explorer le contenu d'une donnée
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ogr2ogr -f CSV /vsistdout/ monfichier.gpkg couche1 | more
+</code></pre></div></td></tr></table></div>
+(<code>| more</code> ajoute la pagination : vos données sont affichées page par page, on fait défiler en appuyant sur espace. On quitte le mode pagination avec <code>q</code>)</p>
+<h3 id="publier-une-donnee-en-base-postgresql">Publier une donnée en base (postgresql).<a class="headerlink" href="#publier-une-donnee-en-base-postgresql" title="Permanent link">&para;</a></h3>
+<p>Pour alléger la ligne de commande, j'utilise des variables d'environnement pour déclarer les paramètres de connexion. Je ne les ai pas nommées au hasard. Pour que psql et ogr les reconnaissent, il faut suivre une convention. Cf. <a href="https://docs.postgresql.fr/15/libpq-envars.html">la doc libPQ</a>.</p>
+<p>Il suffit de les déclarer une fois tant qu'on ne change pas de console (sinon on doit recommencer)</p>
+<p><em>Ajustez les valeurs si besoin</em>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>export PGPASSWORD=secret  # Remplacer par le vrai mdp bien sûr
+# Et pour simplifier les paramètres de connexion, on peut faire pareil avec le reste : 
+export PGDATABASE=cpgeom
+export PGUSER=cpgeom
+export PGHOST=localhost
+</code></pre></div></td></tr></table></div></p>
+<p>On aurait aussi pu écrire un fichier .pgpass comme documenté dans <a href="https://docs.postgresql.fr/15/libpq-pgpass.html">la doc libPQ</a>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>ogr2ogr -f PostgreSQL PG:&quot;host=&#39;$PGHOST&#39; user=&#39;$PGUSER&#39; dbname=&#39;$PGDATABASE&#39;&quot; \ 
+  -progress -nln &quot;roads&quot; -nlt PROMOTE_TO_MULTI -lco OVERWRITE=YES \
+  -lco SCHEMA=destschema monfichier.gpkg couche1
+</code></pre></div></td></tr></table></div>
+<p>Ici, on a utilisé qq options en plus :</p>
+<ul>
+<li><code>-nln</code> pour nommer la table</li>
+<li><code>-lco OVERWRITE=YES</code> pour remplacer le contenu</li>
+<li><code>-lco SCHEMA=destschema</code> pour désigner le schema de destination (et ne pas publier dans <code>public</code>)</li>
+</ul>
+<p>Et puis comme j'ai dit : <a href="https://gdal.org/programs/ogr2ogr.html">voir la doc</a> </p>
 
 
 
@@ -993,7 +1297,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    2026-02-19
+    2026-02-26
   </span>
 
     
