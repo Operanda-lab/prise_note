@@ -263,7 +263,7 @@ SELECT * FROM clubs_rugby;
 
 4.3. Sauvegarder et restaurer les données de postgreSQL en ligne de commande
 
-4.3.1 Sauver
+**4.3.1 Sauver**
 
 Objectif : produire un fichier texte de commandes SQL (« fichier dump »), qui, si on le renvoie au serveur, recrée une base de données identique à celle sauvegardée.
 
@@ -272,6 +272,8 @@ PostgreSQL™ propose pour cela le programme utilitaire pg_dump.
 
 ```SQL
 pg_dump base_de_donnees > fichier_sauvegarde
+
+pg_dump -d rugby_top -U postgres -p 5434 -f rugby_save.sql
 ```
 
 Les extractions peuvent être réalisées sous la forme de scripts ou de fichiers d'archive.
@@ -285,3 +287,78 @@ pg_dump permet de restaurer des bases dans des versions du serveur plus récente
 **Remarque**
 
 pg_dump est aussi la seule méthode qui fonctionnera lors du transfert d'une base de données vers une machine d'une architecture différente (comme par exemple d'un serveur 32 bits à un serveur 64 bits).
+
+**4.3.2 Restaurer**
+
+Les fichiers texte créés par pg_dump peuvent être lus par le programme psql.
+
+```SQL
+psql base_de_donnees < fichier_sauvegarde
+```
+
+**Remarque**
+
+Tous les utilisateurs possédant des objets ou ayant certains droits sur les objets de la base sauvegardée doivent exister préalablement à la restauration de la sauvegarde. S'ils n'existent pas, la restauration échoue pour la création des objets dont ils sont propriétaires ou sur lesquels ils ont des droits.
+
+**4.3.3 Sauvegarder une base directement d'un serveur sur un autre**
+
+```SQL
+pg_dump -h serveur1 base_de_donnees | psql -h serveur2 > base_de_donnees
+
+```
+
+**Conseil**
+
+Après la restauration d'une sauvegarde, il est conseillé d'exécuter ANALYZE sur chaque base de données pour que l'optimiseur de requêtes dispose de statistiques utiles.
+
+**4.3.4 Mettre en place une sauvegarde automatique**
+
+Encore une fois, suivant la taille de la structure des sauvegardes peuvent intervenir à plusieurs niveau.
+
+- Bien souvent, il existe une sauvegarde du serveur qui héberge le serveur PostgreSQL.
+
+- On peut mettre une sauvegarde au niveau d'une base de données en choisissant le rythme adéquat (mise à jour des données régulière, vs modèles peu évolutif)
+
+**Exemple : Script + crontab**
+
+Etablir une commande pg_dump dans un script bash vers une sortie « .dump »
+
+Ce fichier pour s'appeler
+
+On positionnera ce script dans le dossier /usr/bin/
+
+
+Etablir une commande pg_dump dans un script bash vers une sortie « .dump »
+
+Ce fichier pour s'appeler
+
+On positionnera ce script dans le dossier /usr/bin/
+```
+
+```
+```
+DB_USER="postgres"         	# utilisateur de la base de données PostgreSQL
+DB_NAME="ma_base"      	    # nom de la base de données à sauvegarder
+DB_SCHEMA="pourquoi_pas"    # pour ne sauver que le schéma
+current_date=$(date +%Y-%m-%d)
+backup_file="/home/xxx/sauv_bdd/sauv_${DB_NAME}${DB_SCHEMA}${current_date}.dump"
+```
+
+```
+if ! pg_dump -U "$DB_USER" -F c "$DB_NAME" -n "$DB_SCHEMA" > "$backup_file"; then
+echo "Echec: La sauvegarde de la bdd a échouée"
+return 1
+fi
+printf "Sauvegarde de la base ok"
+```
+Paramétrer une tâche « Crontab »
+
+
+```
+crontab -e
+
+# m h  dom mon dow   command
+20 * * * * /usr/bin/script_sauv.sh
+```
+Ca veut dire qu'a chaque fois qu'on est à 20 minutes dans l'heure alors il fait une sauvegarde.
+
