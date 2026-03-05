@@ -1284,10 +1284,14 @@ Automatiser l'exécution des commandes VACUUM et ANALYZE</p>
 <p>4.3. Dashboard - Visuel sur les indicateurs de la base</p>
 <p>4.2. </p>
 <p>4.3. Sauvegarder et restaurer les données de postgreSQL en ligne de commande</p>
-<p>4.3.1 Sauver</p>
+<p><strong>4.3.1 Sauver</strong></p>
 <p>Objectif : produire un fichier texte de commandes SQL (« fichier dump »), qui, si on le renvoie au serveur, recrée une base de données identique à celle sauvegardée.</p>
 <p>PostgreSQL™ propose pour cela le programme utilitaire pg_dump.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">fichier_sauvegarde</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">fichier_sauvegarde</span>
+
+<span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="n">rugby_top</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">5434</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">rugby_save</span><span class="p">.</span><span class="k">sql</span>
 </code></pre></div></td></tr></table></div>
 <p>Les extractions peuvent être réalisées sous la forme de scripts ou de fichiers d'archive.</p>
 <ul>
@@ -1301,6 +1305,66 @@ Automatiser l'exécution des commandes VACUUM et ANALYZE</p>
 <p>pg_dump permet de restaurer des bases dans des versions du serveur plus récentes.</p>
 <p><strong>Remarque</strong></p>
 <p>pg_dump est aussi la seule méthode qui fonctionnera lors du transfert d'une base de données vers une machine d'une architecture différente (comme par exemple d'un serveur 32 bits à un serveur 64 bits).</p>
+<p><strong>4.3.2 Restaurer</strong></p>
+<p>Les fichiers texte créés par pg_dump peuvent être lus par le programme psql.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">psql</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">fichier_sauvegarde</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Remarque</strong></p>
+<p>Tous les utilisateurs possédant des objets ou ayant certains droits sur les objets de la base sauvegardée doivent exister préalablement à la restauration de la sauvegarde. S'ils n'existent pas, la restauration échoue pour la création des objets dont ils sont propriétaires ou sur lesquels ils ont des droits.</p>
+<p><strong>4.3.3 Sauvegarder une base directement d'un serveur sur un autre</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="n">serveur1</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">psql</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="n">serveur2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">base_de_donnees</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Conseil</strong></p>
+<p>Après la restauration d'une sauvegarde, il est conseillé d'exécuter ANALYZE sur chaque base de données pour que l'optimiseur de requêtes dispose de statistiques utiles.</p>
+<p><strong>4.3.4 Mettre en place une sauvegarde automatique</strong></p>
+<p>Encore une fois, suivant la taille de la structure des sauvegardes peuvent intervenir à plusieurs niveau.</p>
+<ul>
+<li>
+<p>Bien souvent, il existe une sauvegarde du serveur qui héberge le serveur PostgreSQL.</p>
+</li>
+<li>
+<p>On peut mettre une sauvegarde au niveau d'une base de données en choisissant le rythme adéquat (mise à jour des données régulière, vs modèles peu évolutif)</p>
+</li>
+</ul>
+<p><strong>Exemple : Script + crontab</strong></p>
+<p>Etablir une commande pg_dump dans un script bash vers une sortie « .dump »</p>
+<p>Ce fichier pour s'appeler</p>
+<p>On positionnera ce script dans le dossier /usr/bin/</p>
+<p>Etablir une commande pg_dump dans un script bash vers une sortie « .dump »</p>
+<p>Ce fichier pour s'appeler</p>
+<p>On positionnera ce script dans le dossier /usr/bin/
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>DB_USER=&quot;postgres&quot;          # utilisateur de la base de données PostgreSQL
+DB_NAME=&quot;ma_base&quot;           # nom de la base de données à sauvegarder
+DB_SCHEMA=&quot;pourquoi_pas&quot;    # pour ne sauver que le schéma
+current_date=$(date +%Y-%m-%d)
+backup_file=&quot;/home/xxx/sauv_bdd/sauv_${DB_NAME}${DB_SCHEMA}${current_date}.dump&quot;
+</code></pre></div></td></tr></table></div></p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>if ! pg_dump -U &quot;$DB_USER&quot; -F c &quot;$DB_NAME&quot; -n &quot;$DB_SCHEMA&quot; &gt; &quot;$backup_file&quot;; then
+echo &quot;Echec: La sauvegarde de la bdd a échouée&quot;
+return 1
+fi
+printf &quot;Sauvegarde de la base ok&quot;
+</code></pre></div></td></tr></table></div>
+Paramétrer une tâche « Crontab »</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>crontab -e
+
+# m h  dom mon dow   command
+20 * * * * /usr/bin/script_sauv.sh
+</code></pre></div></td></tr></table></div>
+Ca veut dire qu'a chaque fois qu'on est à 20 minutes dans l'heure alors il fait une sauvegarde.</p>
 
 
 
