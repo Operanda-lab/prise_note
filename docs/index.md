@@ -40,5 +40,7 @@
 
 ## [Métadonnées](./metadonnees.md)
 
+## [Admin Base de données](./Administrer_serveur.md)
+
 
 
