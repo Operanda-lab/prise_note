@@ -23,7 +23,7 @@
     
     
       
-        <title>Administrer serveur - Prise de note CPGEOM 25-27</title>
+        <title>Concept d'administration - Prise de note CPGEOM 25-27</title>
       
     
     
@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#concept-dadministration" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -107,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Administrer serveur
+              Concept d'administration
             
           </span>
         </div>
@@ -267,6 +272,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -275,7 +282,7 @@
   <span class="md-ellipsis">
     
   
-    Administrer serveur
+    Concept d'administration
   
 
     
@@ -981,6 +988,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -997,9 +1006,301 @@
 
 
 
-  <h1>Administrer serveur</h1>
+<h1 id="concept-dadministration">Concept d'administration<a class="headerlink" href="#concept-dadministration" title="Permanent link">&para;</a></h1>
+<p>on doit différencier la gestion du serveur de la gestion des bases de données</p>
+<ol>
+<li>Différence entre SG et DB</li>
+</ol>
+<p>1.1. Composants BD =&gt; Base de Données</p>
+<ul>
+<li>modèles de données (MCD, MLD, MPD),</li>
+<li>les schémas,</li>
+<li>les données,</li>
+<li>applications connectées (clients),</li>
+<li>utilisateurs de la base de données (rôles),</li>
+<li>requêtes,</li>
+<li>indexes</li>
+</ul>
+<p>1.2. Composants SG =&gt; Système de Gestion</p>
+<ul>
+<li>architecture,</li>
+<li>réseau,</li>
+<li>CPU,</li>
+<li>RAM,</li>
+<li>Stockage,</li>
+<li>OS</li>
+</ul>
+<p>Système d'exploitation</p>
+<p>Une base de dev et une base de prod</p>
+<ol>
+<li>Étapes de la Création d'un système de base de données</li>
+</ol>
+<p>Établir les caractéristiques de la base</p>
+<p>Évaluation du matériel du serveur</p>
+<p>Installation du logiciel PostgreSQL/ PostGIS (serveur et clients)</p>
+<p>Créer et ouvrir la base de données</p>
+<p>Sauvegarde de la ou des bases de données</p>
+<p>Créer et gérer les utilisateurs et leur droits d'accès (stratégie de sécurité dédiée)</p>
+<p>Implémenter la structure de la base</p>
+<p>Optimiser les performances de la base</p>
+<p><a href="https://pgtune.leopard.in.ua/">pgtune</a></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>PGTune calcule la configuration de PostgreSQL en fonction des performances maximales obtenues pour une configuration matérielle donnée. 
+Il ne s&#39;agit pas d&#39;une solution miracle pour l&#39;optimisation de PostgreSQL.
+De nombreux paramètres dépendent non seulement de la configuration matérielle, mais aussi de la taille de la base de données, du nombre de clients et de la complexité des requêtes.
+Une configuration optimale de la base de données ne peut être obtenue qu&#39;en tenant compte de tous ces paramètres.
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Architecture et arborescence</li>
+</ol>
+<p>Datas</p>
+<p>Configuration</p>
+<p>3.3 Les principaux binaires de PostgreSQL</p>
+<ul>
+<li>pg_ctl (réalisé par les installateurs comme systemD ou celui de windows)<ul>
+<li>gestion de l'instance / cluster</li>
+<li>start / stop / kill</li>
+<li>init : création autre espace de datas</li>
+<li>promote : promotion de standby</li>
+</ul>
+</li>
+<li>
+<p>psql</p>
+<ul>
+<li>le premier client de connexion en mode CLI</li>
+<li>on se connecte avec un utilisateur à une base de donnée</li>
+<li>on peux exécuter du SQL et des méta-commandes, ou des script sql (fichiers)</li>
+</ul>
+</li>
+<li>
+<p>pg_createcluster</p>
+<ul>
+<li>création d'une instance PG</li>
+<li>Création des répertoires (/etc et /var/lib)</li>
+</ul>
+</li>
+</ul>
+<p>Accompagné de pg_dropcluster (suppression de cluster), pg_lscluster (lister), pg_ctlcluster (contrôleur du cluster)</p>
+<p><strong>Les binaires pour la sauvegarde</strong>
+- pg_dump
+    - sauvegarde d'une instance
+    - différents formats : plain text (DDL schéma et SQL), binaire (lisible seulement par PG), compressé
+    - différents niveaux d'objets (cluster, db, table, schéma)
+- pg_dumpall
+    - sauvegarde intégrale en format binaire, il sauvegarde les rôles, les utilisateurs.
+- pg_restore
+    - restauration à partir d'une sauvegarde pg_dumpall</p>
+<p><strong>Wrappers (ce qui veut dire "des raccourcis")</strong>
+- createdb
+- dropdb
+- createuser
+- dropuser</p>
+<p><strong>Maintenance</strong>
+Dans l'admi de base de données, il yu a des taches attendus, obligatoires tout un tas de choses à faire au quotidien. Des qu'on fait de la mise à jour de données, il faut réindexer pour optimiser les temps de requetes.</p>
+<p>Ce qu'on doit faire systematiquement c'est un index spatial qui consiste à enregistrer des emprises de toutes nos données. On le fait avec [GIST voir cours de JULIEN FASTRE]</p>
+<ul>
+<li>reindexdb : réindexation </li>
+<li>vaccumdb : tâche de maintenance (ménage)
+faire : sudo ls -lah main/base/5 le h permet de voir <strong>human readible</strong>
+permet de voir ce qui peut être ménagé avec vaccumdb</li>
+</ul>
+<p><strong><em>*Attention</em></strong>*</p>
+<p><strong>Spécifiques système avancées</strong></p>
+<ul>
+<li>pg_controldata : vérifie l'état du serveur et des infos critiques</li>
+<li>pg_resetwal : en cas de crash avec des pb de WAL (risques de pertes de données)</li>
+<li>pg_receive_wal : récupération des WAL d'une autre DB (réplication)</li>
+<li>pg_basebackup : récupération de datas par une autre connexion à une autre DB (réplication)</li>
+</ul>
+<p>3.4 PostgreSQL est un service</p>
+<p>PostgreSQL est considéré comme un service
+Création du fichier .bat de connexion au démarrage</p>
+<ol>
+<li>Focus sur les Tablespaces</li>
+</ol>
+<p>PGDATA / La ou on a le dossier base / dossier avec des chiffres OID </p>
+<p>Physiquement le pgdefaut si on change rien tous les emplacements physqiues se trouvent ici.</p>
+<p>Par contre je peux mettre mabase et tous les objets à l'intérieur ou une partie dans un autre endroit</p>
+<p>Par exemple on peut mettre les indexations (indexes) dans des diques ultraperformant. Mettre donc le tablespace dans un SSD pour être plus rapide et les données sur un HDD</p>
+<p>On peut donc stocker des OID sur des disques différents</p>
+<table>
+<thead>
+<tr>
+<th>d</th>
+<th>rwx</th>
+<th>rwx</th>
+<th>rwx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dossier</td>
+<td>proprietaire</td>
+<td>groupe</td>
+<td>utilisateur</td>
+</tr>
+</tbody>
+</table>
+<p>Si par exemple on a un disque saturé on peut mettre du coup le sOID sur d'autres disques</p>
+<ol>
+<li>créer le dossier physqiue sur le disque</li>
+<li>
+<p>Création de la tablespace dans le dossier Physique</p>
+<p>CREATE TABLESPACE mine OWNER postgres   LOCATION '/home/idgeo/tablespace';</p>
+</li>
+<li>
+<p>Les objets vont dans les Tablespaces</p>
+</li>
+<li>
+<p>Le rôle de DBA</p>
+</li>
+</ol>
+<p>la gestion des droits utilisateurs,</p>
+<p>la gestion des tablespaces,</p>
+<p>la gestion de l'espace disque,</p>
+<p>identifier les tables à suivre,</p>
+<p>la gestion des sauvegardes</p>
+<ol>
+<li>Manipulations diverses</li>
+</ol>
+<p>Pgtune &amp; modification de la configuration du serveur</p>
+<p>Gestion des tablespaces</p>
+<p>Création d'une base et attribution du tablespace</p>
+<p>Création d'une base de données template</p>
+<p>Création d'un utilisateur = ! de postgres</p>
+<p>Création de tables et affectation à un tablespace</p>
+<p>Création d'indexes et affectation à un tablespace</p>
+<ol>
+<li>Sauvegarder / Restaurer - Maintenir un serveur de bases de données</li>
+</ol>
+<p>4.1. Maintenance - Vacuum et autre dashboard</p>
+<p>4.1.1. Définition
+Récupère l'espace inutilisé et, optionnellement, analyse une base.</p>
+<p>Lors des opérations normales de PostgreSQL, les lignes supprimées ou rendues obsolètes par une mise à jour ne sont pas physiquement supprimées de leur table.</p>
+<p>Vacuum permet de récupérer l'espace occupé par les lignes supprimées.</p>
+<p>4.1.2 Remarque</p>
+<p>Le VACCUM standard (sans FULL) récupère simplement l'espace et le rend disponible pour une réutilisation. Cette forme de la commande peut opérer en parallèle avec les opérations normales de lecture et d'écriture de la table, car elle n'utilise pas de verrou exclusif.</p>
+<p>VACCUM FULL fait un traitement plus complet et, en particulier, déplace des lignes dans d'autres blocs pour compacter la table au maximum sur le disque. Cette forme est beaucoup plus lente et pose un verrou exclusif sur la table pour faire son traitement.</p>
+<p>Des VACUUM standard et d'une fréquence modérée sont une meilleure approche que des VACUUM FULL, même non fréquents, pour maintenir des tables mises à jour fréquemment.</p>
+<p>4.1.3. <strong>Conseil</strong></p>
+<p>Après avoir ajouté ou supprimé un grand nombre de lignes, il peut être utile de faire un VACUUM ANALYZE sur la table affectée. Cela met les catalogues système à jour de tous les changements récents et permet à l'optimiseur de requêtes de PostgreSQL™ de faire de meilleurs choix lors de l'optimisation des requêtes.</p>
+<p>Pour exécuter un VACUUM sur une table, vous devez habituellement être le propriétaire de la table ou un super utilisateur. Les propriétaires de la base de données sont autorisés à exécuter VACUUM sur toutes les tables de leurs bases de données, sauf sur les catalogues partagés. Cette restriction signifie qu'un vrai VACUUM sur une base complète ne peut se faire que par un super utilisateur.</p>
+<p>Il est recommandé que les bases de données actives de production soient traitées par VACUUM fréquemment (au moins toutes les nuits), pour supprimer les lignes mortes.</p>
+<p>4.2. Auto-vacuum
+Automatiser l'exécution des commandes VACUUM et ANALYZE</p>
+<p>Une fois activé, le démon autovacuum s'exécute périodiquement et vérifie les tables ayant un grand nombre de lignes insérées, mises à jour ou supprimées. Ces vérifications utilisent la fonctionnalité de récupération de statistiques au niveau ligne.</p>
+<p>Dans la configuration par défaut, l'autovacuum est activé et les paramètres liés sont correctement configurés.</p>
+<p><strong>EXO</strong>
+ sudo psql -U postgres -p 5433 -f /mnt/d/olivier/A2_admin_BDD/top_14.sql</p>
+<p>Va intégrer lire le fichier sql et faire tout ce que celui ci demande. On y met aussi les informations psql comme \c ou \l+</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Créer la base de données &quot;rugby_top&quot; avec l&#39;extension PostGIS</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">rugby_top</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mine</span><span class="p">;</span>
+<span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">rugby_top</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span>
 
+<span class="c1">-- Créer la table &quot;clubs_rugby&quot; avec un champ géométrique &quot;geom&quot;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nom_club</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ville</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">latitude</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">,</span>
+<span class="w">    </span><span class="n">longitude</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">,</span>
+<span class="w">    </span><span class="n">geom</span><span class="w"> </span><span class="n">GEOMETRY</span><span class="p">(</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="mi">4326</span><span class="p">)</span>
+<span class="p">);</span>
 
+<span class="c1">-- Création de l&#39;index spatail sur geom</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_club_geom</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">gist</span><span class="w"> </span><span class="p">(</span><span class="n">geom</span><span class="p">);</span>
+
+<span class="c1">-- Insérer les données des 14 clubs du Top 14 avec leurs coordonnées géographiques</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="w"> </span><span class="p">(</span><span class="n">nom_club</span><span class="p">,</span><span class="w"> </span><span class="n">ville</span><span class="p">,</span><span class="w"> </span><span class="n">latitude</span><span class="p">,</span><span class="w"> </span><span class="n">longitude</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;Stade Toulousain&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Toulouse&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6047</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">4442</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">4442</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6047</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Union Bordeaux-Bègles&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bordeaux&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">.</span><span class="mi">8378</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">5792</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">5792</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">.</span><span class="mi">8378</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Stade Rochelais&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;La Rochelle&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">1603</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">1511</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">1511</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">1603</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;ASM Clermont Auvergne&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Clermont-Ferrand&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7772</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="mi">0870</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">3</span><span class="p">.</span><span class="mi">0870</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7772</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;RC Toulon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Toulon&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">1242</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">9280</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="mi">9280</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">1242</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Racing 92&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Nanterre&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8924</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">2066</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2066</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8924</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Stade Français Paris&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Paris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8412</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">2530</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2530</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8412</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Castres Olympique&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Castres&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6062</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">2400</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2400</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6062</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Montpellier Hérault Rugby&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Montpellier&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6110</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="mi">8767</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">3</span><span class="p">.</span><span class="mi">8767</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6110</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Section Paloise&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pau&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">2951</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">3700</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">3700</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">2951</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Aviron Bayonnais&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bayonne&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">4929</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">4748</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">4748</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">4929</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;USA Perpignan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Perpignan&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">.</span><span class="mi">6986</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">8956</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">8956</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">.</span><span class="mi">6986</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;LOU Rugby&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Lyon&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7600</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="mi">8320</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">4</span><span class="p">.</span><span class="mi">8320</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7600</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Oyonnax Rugby&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Oyonnax&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">2598</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">6556</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="mi">6556</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">2598</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">));</span>
+
+<span class="c1">-- Afficher la structure de la table</span>
+<span class="err">\</span><span class="n">d</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="p">;</span>
+
+<span class="c1">-- Voir le tablespace des base \l+</span>
+<span class="err">\</span><span class="n">l</span><span class="o">+</span>
+<span class="c1">-- Voir le contenur de la table</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>4.3. Dashboard - Visuel sur les indicateurs de la base</p>
+<p>4.2. </p>
+<p>4.3. Sauvegarder et restaurer les données de postgreSQL en ligne de commande</p>
+<p>4.3.1 Sauver</p>
+<p>Objectif : produire un fichier texte de commandes SQL (« fichier dump »), qui, si on le renvoie au serveur, recrée une base de données identique à celle sauvegardée.</p>
+<p>PostgreSQL™ propose pour cela le programme utilitaire pg_dump.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">fichier_sauvegarde</span>
+</code></pre></div></td></tr></table></div>
+<p>Les extractions peuvent être réalisées sous la forme de scripts ou de fichiers d'archive.</p>
+<ul>
+<li>
+<p>Les scripts sont au format texte et contiennent les commandes SQL nécessaires à la reconstruction de la base de données dans l'état où elle était au moment de la sauvegarde. La restauration s'effectue en chargeant ces scripts avec psql.</p>
+</li>
+<li>
+<p>La reconstruction de la base de données à partir d'autres formats de fichiers archive est obtenue avec pg_restore. Les formats de fichier en sortie les plus flexibles sont le format « custom » (-Fc) et le format « directory » (-Fd). Ils permettent la sélection et le ré-ordonnancement de tous les éléments archivés, le support de la restauration en parallèle. De plus, ils sont compressés par défaut. Le format « directory » est aussi le seul format à permettre les sauvegardes parallélisées.</p>
+</li>
+</ul>
+<p>pg_dump permet de restaurer des bases dans des versions du serveur plus récentes.</p>
+<p><strong>Remarque</strong></p>
+<p>pg_dump est aussi la seule méthode qui fonctionnera lors du transfert d'une base de données vers une machine d'une architecture différente (comme par exemple d'un serveur 32 bits à un serveur 64 bits).</p>
 
 
 
