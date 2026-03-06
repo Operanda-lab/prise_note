@@ -1,8 +1,10 @@
-# Concept d'administration
+# Administrer son serveur de base de données
+
+## Concept d'administration
 
 on doit différencier la gestion du serveur de la gestion des bases de données
 
-1. Différence entre SG et DB
+### Différence entre SG et DB
 
 1.1. Composants BD => Base de Données
 
@@ -27,7 +29,7 @@ Système d'exploitation
 
 Une base de dev et une base de prod
 
-2. Étapes de la Création d'un système de base de données
+## Étapes de la Création d'un système de base de données
 
 Établir les caractéristiques de la base
 
@@ -52,11 +54,53 @@ Optimiser les performances de la base
 	De nombreux paramètres dépendent non seulement de la configuration matérielle, mais aussi de la taille de la base de données, du nombre de clients et de la complexité des requêtes.
 	Une configuration optimale de la base de données ne peut être obtenue qu'en tenant compte de tous ces paramètres.
 
-3. Architecture et arborescence
+## Architecture et arborescence
 
-Datas
+### Datas
 
-Configuration
+ls -la /var/lib/postgresql/<version>/main/
+
+| Eléments | Description |
+|---|---|
+| PG_VERSION | Un fichier contenant le numéro de version majeur de PostgreSQL™ |
+| base | Sous-répertoire contenant les sous-répertoires par base de données |
+| global | Sous-répertoire contenant les tables communes au groupe, telles que pg_database |
+| pg_commit_ts | Sous-répertoire contenant des données d'horodatage des validations de transations |
+| pg_clog | Sous-répertoire contenant les données d'état de validation des transactions |
+| pg_dynshmem | Sous-répertoire contenant les fichiers utilisés par le système de gestion de la mémoire partagée dynamique |
+| pg_logical | Sous-répertoire contenant les données de statut pour le décodage logique |
+| pg_multixact | Sous-répertoire contenant des données sur l'état des multi-transactions (utilisé pour les verrous de lignes partagées) |
+| pg_notify | Sous-répertoire contenant les données de statut de LISTEN/NOTIFY |
+| pg_replslot | Sous-répertoire contenant les données des slots de réplication |
+| pg_serial | Sous-répertoire contenant des informations sur les transactions sérialisables validées |
+| pg_snapshots | Sous-répertoire contenant les snapshots (images) exportés |
+| pg_stat | Sous-répertoire contenant les fichiers permanents pour le sous-système de statistiques |
+| pg_stat_tmp | Sous-répertoire contenant les fichiers temporaires pour le sous-système des statistiques |
+| pg_subtrans | Sous-répertoire contenant les données d'états des sous-transaction |
+| pg_tblspc | Sous-répertoire contenant les liens symboliques vers les espaces logiques |
+| pg_twophase | Sous-répertoire contenant les fichiers d'état pour les transactions préparées |
+| pg_xlog | Sous-répertoire contenant les fichiers WAL (Write Ahead Log) |
+| postgresql.auto.conf | Fichier utilisé pour les paramètres configurés avec la commande ALTER SYSTEM |
+| postmaster.opts | Un fichier enregistrant les options en ligne de commande avec lesquelles le serveur a été lancé la dernière fois |
+| postmaster.pid | Un fichier verrou contenant l'identifiant du processus postmaster en cours d'exécution (PID), le chemin du répertoire de données, la date et l'heure du lancement de postmaster, le numéro de port, le chemin du répertoire du socket de domaine Unix (vide sous Windows), la première adresse valide dans listen_address (adresse IP ou *, ou vide s'il n'y a pas d'écoute TCP) et l'identifiant du segment de mémoire partagé (ce fichier est supprimé à l'arrêt du serveur) |
+
+### Configuration
+
+ls -la /etc/postgresql/<version>/main
+
+**pg_hba.conf** : pour paramétrer les options de connections, méthodes d’accès et qui (machine) accède
+
+**postgresql.conf** : pour paramétrer tous les détails et capacité du serveur, comme par exemple le port.
+
+Les fichiers pgdata /var/lib/postgresql/10/main/
+ou on retrouve les tablespace et OID
+
+Pour vérifier les services qui tournent
+Vérifier les services postgres qui tourne :
+
+ps auxf | grep postgres
+
+
 
 3.3 Les principaux binaires de PostgreSQL
 
@@ -259,7 +303,33 @@ SELECT * FROM clubs_rugby;
  
 4.3. Dashboard - Visuel sur les indicateurs de la base
 
-4.2. 
+4.2. Les tablespaces
+
+**definition**
+
+Les tablespaces se définissent en amont de la base.
+
+On les nomme et leur indique un dossier physique dans l'arborescence de la machine, de préférence dans un emplacement de stockage puisqu'il va contenir les données.
+
+```SQL
+CREATE TABLESPACE nom_du_tbsp OWNER user_name LOCATION /emplacement/choisi/;
+```
+
+**Attention**
+La configuration de base ...
+La configuration de base stocke toutes les bases dans le même emplacement PGDATA/base ...
+
+Cela suppose de prévoir l'espace nécessaire à cet emplacement.
+
+C'est le risque de tout perdre ! Tout est au même endroit. (ndrl toutes les bases)
+
+En terme d'optimisation, il y a mieux à faire.
+
+**Remarque : La gestion des Tablespaces et bonnes pratiques.**
+
+- Création d'un emplacement (dossier) par base.
+- Création de plusieurs Tablaspaces par base possible (si on atteint la capacité maximale d'un disque par exemple).
+- Séparation des tables et des indexes sur des tablespaces différent.s L'indexation et son utilisation étant gourmand en ressources, il est envisageable de stocker les indexes sur un disque rapide type SSD et les tables sur disque mécanique.
 
 4.3. Sauvegarder et restaurer les données de postgreSQL en ligne de commande
 
@@ -336,7 +406,7 @@ On positionnera ce script dans le dossier /usr/bin/
 ```
 
 ```
-```
+```shell
 DB_USER="postgres"         	# utilisateur de la base de données PostgreSQL
 DB_NAME="ma_base"      	    # nom de la base de données à sauvegarder
 DB_SCHEMA="pourquoi_pas"    # pour ne sauver que le schéma
@@ -361,4 +431,171 @@ crontab -e
 20 * * * * /usr/bin/script_sauv.sh
 ```
 Ca veut dire qu'a chaque fois qu'on est à 20 minutes dans l'heure alors il fait une sauvegarde.
+
+
+**4.3.4 Utilisation de pg_dumpall**
+
+Permet une sauvegarde de tout un cluster (bases de données, rôles et tablespaces).
+
+Permet une sauvegarde de tout un cluster (bases de données, rôles et tablespaces).
+
+```bash
+pg_dumpall > fichier_sauvegarde
+```
+Le fichier de sauvegarde résultant peut être restauré avec psql :
+
+```bash
+psql -h localhost -p 5432 -U postgres -c "CREATE DATABASE nombase;"
+psql -h localhost -p 5432 -U postgres -d nombase -c "CREATE EXTENSION postgis;"
+psql -h localhost -p 5432 -U utilisateur -d nombase -f chemin\complet\du\fichier.sql
+```
+
+Il est préférable d'avoir les droits de superutilisateur de la base de données pour obtenir une sauvegarde complète.
+
+Il faut obligatoirement avoir le profil superutilisateur pour restaurer une sauvegarde faite avec pg_dumpall, afin de pouvoir restaurer les informations sur les rôles et les tablespaces. Si les tablespaces sont utilisés, il faut s'assurer que leurs chemins sauvegardés sont appropriés à la nouvelle installation.
+
+**pgdump_all c'est bien pour les montées en version, ou changement de bécane.**
+
+Le principe de la sauvegarde c'est à investiguer, la vocation c'est que la sauvegarge ne reste pas sur le meme serveur.
+
+
+## Les droits d'accès aux données (rôles et privilèges)
+
+Le super utilisateur utilisé avec parcimonie est seulement pour 1 personne, un administrateur
+
+D'un point de vue postgrsql on parle de rôle. Différence entre groupe et utilisateurs c'est la capacité à se connecter.
+
+La on définit des caractéristiques à un rôle différent des droits
+```sql
+CREATE ROLE postgres WITH
+  LOGIN
+  SUPERUSER
+  INHERIT -- ou NO INERIT on peut faire heriter des utilisateurs 
+  CREATEDB -- ou NOCREATEDB
+  CREATEROLE
+  REPLICATION
+  BYPASSRLS
+  ENCRYPTED PASSWORD
+```
+
+Pour créer un template seule le superutilisateur peut le faire
+
+Pour faire un groupe il faut passer en nologin car le groupe n'est pas un utilisateur 
+
+### Les contrôles d'accès
+
+
+
+### Les privilèges (GRANT)
+
+Un privilège est un **droit** sur un objet de la base **attribué à un rôle**.
+
+Les SGBD permettent généralement de spécifier assez finement les privilèges d'un utilisateur en fonction des objets manipulés :
+
+- base de données
+- schéma
+- table (relation)
+- colonne (attribut)
+
+Ainsi, un utilisateur peut se voir attribuer un privilège pour toute une base de données, le contenu d'un schéma, ou seulement pour quelques tables, ou encore sur uniquement quelques colonnes de certaines tables.
+
+**Fondamental : Regles d'attribution des privilèges**
+
+**- Règle n°0 : un mot de passe pour chacun**
+
+Tous les utilisateurs (clients, applications) doivent avoir un mot de passe.
+
+**- Règle n°1 : attribution du moindre privilège.**
+
+Les utilisateurs ne doivent avoir que le minimum de droits, ceux strictement nécessaires à l'accomplissement de leurs tâches. Les privilèges peuvent évoluer au cours du temps car les besoins et les tâches affectées ne sont pas immuables, mais à un moment donné, seuls les droits indispensables doivent être fournis à un utilisateur.
+
+Il faut éviter de créer plusieurs comptes avec des droits d'administrateur.
+
+**- Règle n°2 : contrôle de la population.**
+
+Le personnel d'une entreprise bouge, il y a des départs, des arrivées, des promotions... Les privilèges doivent êtres synchrones avec la réalité de la population : il faut supprimer les comptes des utilisateurs quittant l'entreprise et de ceux n'étant plus affectés à telle ou telle tâche.
+
+**- Règle n°3 : supervision de la délégation des tâches d'administration.**
+
+Un administrateur peut être amené à déléguer auprès d'une autre personne les tâches d'attribution des privilèges de tout ou partie de la population des utilisateurs (cf WITH GRANT OPTION). Un contrôle a posteriori doit être réalisé afin de vérifier que le résultat de cette délégation est conforme à la politique adoptée.
+
+**- Règle n°4 : contrôle physique des connexions.**
+
+La connexion d'un utilisateur à une base de données peut être réalisée depuis n'importe où dans le monde grâce à Internet. Il est nécessaire de restreindre les connexions à des hôtes spécifiques connus (hba_conf).
+
+### Les principaux privilèges :
+Les droits possibles sont :
+
+**SELECT**
+
+Autorise une sélection sur toutes les colonnes, ou sur les colonnes listées spécifiquement, de la table, vue ou séquence indiquée. Autorise aussi l'utilisation de COPY TO. De plus, ce droit est nécessaire pour référencer des valeurs de colonnes existantes avec UPDATE ou DELETE.
+
+**INSERT**
+
+Autorise une insertion d'une nouvelle ligne dans la table indiquée. Si des colonnes spécifiques sont listées, seules ces colonnes peuvent être affectées dans une commande INSERT, (les autres colonnes recevront par conséquent des valeurs par défaut). Autorise aussi COPY FROM.
+
+**UPDATE**
+
+Autorise une mise à jour sur toute colonne de la table spécifiée, ou sur les colonnes spécifiquement listées. (En fait, toute commande UPDATE nécessite aussi le droit SELECT car elle doit référencer les colonnes pour déterminer les lignes à mettre à jour et/ou calculer les nouvelles valeurs des colonnes.)
+
+**DELETE**
+
+Autorise la suppression d'une ligne sur la table indiquée. (En fait, toute commande DELETE nécessite aussi le droit SELECT car elle doit référencer les colonnes pour déterminer les lignes à supprimer.)
+
+**TRUNCATE**
+
+Autorise la suppression de tous les enregistrements de la table.
+
+**REFERENCES**
+
+Ce droit est requis sur les colonnes de référence et les colonnes qui référencent pour créer une contrainte de clé étrangère. Le droit peut être accordé pour toutes les colonnes, ou seulement des colonnes spécifiques.
+
+**TRIGGER**
+
+Autorise la création d'un déclencheur sur la table indiquée.
+
+**CREATE**
+
+Pour les bases de données, autorise la création de nouveaux schémas dans la base de données.
+
+Pour les schémas, autorise la création de nouveaux objets dans le schéma. Pour renommer un objet existant, il est nécessaire d'en être le propriétaire et de posséder ce droit sur le schéma qui le contient.
+
+Pour les tablespaces, autorise la création de tables, d'index et de fichiers temporaires dans le tablespace et autorise la création de bases de données utilisant ce tablespace par défaut. (Révoquer ce privilège ne modifie pas l'emplacement des objets existants.)
+
+**CONNECT**
+
+Autorise l'utilisateur à se connecter à la base indiquée. Ce droit est vérifié à la connexion (en plus de la vérification des restrictions imposées par pg_hba.conf).
+
+**TEMPORARY, TEMP**
+
+Autorise la création de tables temporaires lors de l'utilisation de la base de données spécifiée.
+
+**EXECUTE**
+
+Autorise l'utilisation de la fonction indiquée et l'utilisation de tout opérateur défini sur cette fonction. C'est le seul type de droit applicable aux fonctions. (Cette syntaxe fonctionne aussi pour les fonctions d'agrégat)
+
+**ALL PRIVILEGES**
+
+Octroie tous les droits disponibles en une seule opération. Le mot clé PRIVILEGES est optionnel sous PostgreSQL™ mais est requis dans le standard SQL.
+
+La commande SQL GRANT permet de définir les droits :
+
+### Les droits d'accès aux données spatiales
+
+
+
+### Les rôles par l'exemple - Illustration QGIS
+
+
+extensions hstore pour integrer des bases de données clés/valeurs
+
+
+## FOREIGN DATA WRAPPERS
+
+Faire correspondre une base de données distantes à notre base de données. 
+
+Extention "fdw" 
+"ogr fdw" on peut se connecter à un flux
+"postgre fdw" pour se connecter à une base autre
+" file fdw" se connecter à un fichier
 
