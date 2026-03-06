@@ -1,0 +1,2061 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../aj/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Administrer son serveur de base de données - Prise de note CPGEOM 25-27</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:300,300i,400,400i,700,700i%7CRegular:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Google Sans";--md-code-font:"Regular"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#administrer-son-serveur-de-base-de-donnees" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Prise de note CPGEOM 25-27" class="md-header__button md-logo" aria-label="Prise de note CPGEOM 25-27" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Prise de note CPGEOM 25-27
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Administrer son serveur de base de données
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Prise de note CPGEOM 25-27" class="md-nav__button md-logo" aria-label="Prise de note CPGEOM 25-27" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Prise de note CPGEOM 25-27
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrer son serveur de base de données
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrer son serveur de base de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concept-dadministration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept d'administration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept d&#39;administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#difference-entre-sg-et-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Différence entre SG et DB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapes-de-la-creation-dun-systeme-de-base-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étapes de la Création d'un système de base de données
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-et-arborescence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture et arborescence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture et arborescence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-droits-dacces-aux-donnees-roles-et-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les droits d'accès aux données (rôles et privilèges)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les droits d&#39;accès aux données (rôles et privilèges)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-controles-dacces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les contrôles d'accès
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-privileges-grant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les privilèges (GRANT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-principaux-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les principaux privilèges :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-droits-dacces-aux-donnees-spatiales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les droits d'accès aux données spatiales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-roles-par-lexemple-illustration-qgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les rôles par l'exemple - Illustration QGIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-data-wrappers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FOREIGN DATA WRAPPERS
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aj/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aspects juridiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chef de projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cq1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contrôle Qualité (Stéphane Rolle)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cq2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contrôle Qualité (Marc Leobet)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cycled/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cycled
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy_auto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy auto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../di/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Di
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperabilite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interopérabilité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadonnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les métadonnées
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ogr_et_vrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation rapide de la librairie GDAL/OGR et du format VRT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Openig
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../outils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outils
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plume
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Postgis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../script_auto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatisation script bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sig
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sources de données et référentiels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sql
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syntaxe_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    La syntaxe de l'aide sur les commandes SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../veille/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Veille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    outils VRT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#concept-dadministration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Concept d'administration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concept d&#39;administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#difference-entre-sg-et-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Différence entre SG et DB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etapes-de-la-creation-dun-systeme-de-base-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étapes de la Création d'un système de base de données
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-et-arborescence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture et arborescence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture et arborescence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-droits-dacces-aux-donnees-roles-et-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les droits d'accès aux données (rôles et privilèges)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les droits d&#39;accès aux données (rôles et privilèges)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-controles-dacces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les contrôles d'accès
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-privileges-grant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les privilèges (GRANT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-principaux-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les principaux privilèges :
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-droits-dacces-aux-donnees-spatiales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les droits d'accès aux données spatiales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-roles-par-lexemple-illustration-qgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les rôles par l'exemple - Illustration QGIS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foreign-data-wrappers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FOREIGN DATA WRAPPERS
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="administrer-son-serveur-de-base-de-donnees">Administrer son serveur de base de données<a class="headerlink" href="#administrer-son-serveur-de-base-de-donnees" title="Permanent link">&para;</a></h1>
+<h2 id="concept-dadministration">Concept d'administration<a class="headerlink" href="#concept-dadministration" title="Permanent link">&para;</a></h2>
+<p>on doit différencier la gestion du serveur de la gestion des bases de données</p>
+<h3 id="difference-entre-sg-et-db">Différence entre SG et DB<a class="headerlink" href="#difference-entre-sg-et-db" title="Permanent link">&para;</a></h3>
+<p>1.1. Composants BD =&gt; Base de Données</p>
+<ul>
+<li>modèles de données (MCD, MLD, MPD),</li>
+<li>les schémas,</li>
+<li>les données,</li>
+<li>applications connectées (clients),</li>
+<li>utilisateurs de la base de données (rôles),</li>
+<li>requêtes,</li>
+<li>indexes</li>
+</ul>
+<p>1.2. Composants SG =&gt; Système de Gestion</p>
+<ul>
+<li>architecture,</li>
+<li>réseau,</li>
+<li>CPU,</li>
+<li>RAM,</li>
+<li>Stockage,</li>
+<li>OS</li>
+</ul>
+<p>Système d'exploitation</p>
+<p>Une base de dev et une base de prod</p>
+<h2 id="etapes-de-la-creation-dun-systeme-de-base-de-donnees">Étapes de la Création d'un système de base de données<a class="headerlink" href="#etapes-de-la-creation-dun-systeme-de-base-de-donnees" title="Permanent link">&para;</a></h2>
+<p>Établir les caractéristiques de la base</p>
+<p>Évaluation du matériel du serveur</p>
+<p>Installation du logiciel PostgreSQL/ PostGIS (serveur et clients)</p>
+<p>Créer et ouvrir la base de données</p>
+<p>Sauvegarde de la ou des bases de données</p>
+<p>Créer et gérer les utilisateurs et leur droits d'accès (stratégie de sécurité dédiée)</p>
+<p>Implémenter la structure de la base</p>
+<p>Optimiser les performances de la base</p>
+<p><a href="https://pgtune.leopard.in.ua/">pgtune</a></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>PGTune calcule la configuration de PostgreSQL en fonction des performances maximales obtenues pour une configuration matérielle donnée. 
+Il ne s&#39;agit pas d&#39;une solution miracle pour l&#39;optimisation de PostgreSQL.
+De nombreux paramètres dépendent non seulement de la configuration matérielle, mais aussi de la taille de la base de données, du nombre de clients et de la complexité des requêtes.
+Une configuration optimale de la base de données ne peut être obtenue qu&#39;en tenant compte de tous ces paramètres.
+</code></pre></div></td></tr></table></div>
+<h2 id="architecture-et-arborescence">Architecture et arborescence<a class="headerlink" href="#architecture-et-arborescence" title="Permanent link">&para;</a></h2>
+<h3 id="datas">Datas<a class="headerlink" href="#datas" title="Permanent link">&para;</a></h3>
+<p>ls -la /var/lib/postgresql/<version>/main/</p>
+<table>
+<thead>
+<tr>
+<th>Eléments</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PG_VERSION</td>
+<td>Un fichier contenant le numéro de version majeur de PostgreSQL™</td>
+</tr>
+<tr>
+<td>base</td>
+<td>Sous-répertoire contenant les sous-répertoires par base de données</td>
+</tr>
+<tr>
+<td>global</td>
+<td>Sous-répertoire contenant les tables communes au groupe, telles que pg_database</td>
+</tr>
+<tr>
+<td>pg_commit_ts</td>
+<td>Sous-répertoire contenant des données d'horodatage des validations de transations</td>
+</tr>
+<tr>
+<td>pg_clog</td>
+<td>Sous-répertoire contenant les données d'état de validation des transactions</td>
+</tr>
+<tr>
+<td>pg_dynshmem</td>
+<td>Sous-répertoire contenant les fichiers utilisés par le système de gestion de la mémoire partagée dynamique</td>
+</tr>
+<tr>
+<td>pg_logical</td>
+<td>Sous-répertoire contenant les données de statut pour le décodage logique</td>
+</tr>
+<tr>
+<td>pg_multixact</td>
+<td>Sous-répertoire contenant des données sur l'état des multi-transactions (utilisé pour les verrous de lignes partagées)</td>
+</tr>
+<tr>
+<td>pg_notify</td>
+<td>Sous-répertoire contenant les données de statut de LISTEN/NOTIFY</td>
+</tr>
+<tr>
+<td>pg_replslot</td>
+<td>Sous-répertoire contenant les données des slots de réplication</td>
+</tr>
+<tr>
+<td>pg_serial</td>
+<td>Sous-répertoire contenant des informations sur les transactions sérialisables validées</td>
+</tr>
+<tr>
+<td>pg_snapshots</td>
+<td>Sous-répertoire contenant les snapshots (images) exportés</td>
+</tr>
+<tr>
+<td>pg_stat</td>
+<td>Sous-répertoire contenant les fichiers permanents pour le sous-système de statistiques</td>
+</tr>
+<tr>
+<td>pg_stat_tmp</td>
+<td>Sous-répertoire contenant les fichiers temporaires pour le sous-système des statistiques</td>
+</tr>
+<tr>
+<td>pg_subtrans</td>
+<td>Sous-répertoire contenant les données d'états des sous-transaction</td>
+</tr>
+<tr>
+<td>pg_tblspc</td>
+<td>Sous-répertoire contenant les liens symboliques vers les espaces logiques</td>
+</tr>
+<tr>
+<td>pg_twophase</td>
+<td>Sous-répertoire contenant les fichiers d'état pour les transactions préparées</td>
+</tr>
+<tr>
+<td>pg_xlog</td>
+<td>Sous-répertoire contenant les fichiers WAL (Write Ahead Log)</td>
+</tr>
+<tr>
+<td>postgresql.auto.conf</td>
+<td>Fichier utilisé pour les paramètres configurés avec la commande ALTER SYSTEM</td>
+</tr>
+<tr>
+<td>postmaster.opts</td>
+<td>Un fichier enregistrant les options en ligne de commande avec lesquelles le serveur a été lancé la dernière fois</td>
+</tr>
+<tr>
+<td>postmaster.pid</td>
+<td>Un fichier verrou contenant l'identifiant du processus postmaster en cours d'exécution (PID), le chemin du répertoire de données, la date et l'heure du lancement de postmaster, le numéro de port, le chemin du répertoire du socket de domaine Unix (vide sous Windows), la première adresse valide dans listen_address (adresse IP ou *, ou vide s'il n'y a pas d'écoute TCP) et l'identifiant du segment de mémoire partagé (ce fichier est supprimé à l'arrêt du serveur)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>ls -la /etc/postgresql/<version>/main</p>
+<p><strong>pg_hba.conf</strong> : pour paramétrer les options de connections, méthodes d’accès et qui (machine) accède</p>
+<p><strong>postgresql.conf</strong> : pour paramétrer tous les détails et capacité du serveur, comme par exemple le port.</p>
+<p>Les fichiers pgdata /var/lib/postgresql/10/main/
+ou on retrouve les tablespace et OID</p>
+<p>Pour vérifier les services qui tournent
+Vérifier les services postgres qui tourne :</p>
+<p>ps auxf | grep postgres</p>
+<p>3.3 Les principaux binaires de PostgreSQL</p>
+<ul>
+<li>pg_ctl (réalisé par les installateurs comme systemD ou celui de windows)<ul>
+<li>gestion de l'instance / cluster</li>
+<li>start / stop / kill</li>
+<li>init : création autre espace de datas</li>
+<li>promote : promotion de standby</li>
+</ul>
+</li>
+<li>
+<p>psql</p>
+<ul>
+<li>le premier client de connexion en mode CLI</li>
+<li>on se connecte avec un utilisateur à une base de donnée</li>
+<li>on peux exécuter du SQL et des méta-commandes, ou des script sql (fichiers)</li>
+</ul>
+</li>
+<li>
+<p>pg_createcluster</p>
+<ul>
+<li>création d'une instance PG</li>
+<li>Création des répertoires (/etc et /var/lib)</li>
+</ul>
+</li>
+</ul>
+<p>Accompagné de pg_dropcluster (suppression de cluster), pg_lscluster (lister), pg_ctlcluster (contrôleur du cluster)</p>
+<p><strong>Les binaires pour la sauvegarde</strong>
+- pg_dump
+    - sauvegarde d'une instance
+    - différents formats : plain text (DDL schéma et SQL), binaire (lisible seulement par PG), compressé
+    - différents niveaux d'objets (cluster, db, table, schéma)
+- pg_dumpall
+    - sauvegarde intégrale en format binaire, il sauvegarde les rôles, les utilisateurs.
+- pg_restore
+    - restauration à partir d'une sauvegarde pg_dumpall</p>
+<p><strong>Wrappers (ce qui veut dire "des raccourcis")</strong>
+- createdb
+- dropdb
+- createuser
+- dropuser</p>
+<p><strong>Maintenance</strong>
+Dans l'admi de base de données, il yu a des taches attendus, obligatoires tout un tas de choses à faire au quotidien. Des qu'on fait de la mise à jour de données, il faut réindexer pour optimiser les temps de requetes.</p>
+<p>Ce qu'on doit faire systematiquement c'est un index spatial qui consiste à enregistrer des emprises de toutes nos données. On le fait avec [GIST voir cours de JULIEN FASTRE]</p>
+<ul>
+<li>reindexdb : réindexation </li>
+<li>vaccumdb : tâche de maintenance (ménage)
+faire : sudo ls -lah main/base/5 le h permet de voir <strong>human readible</strong>
+permet de voir ce qui peut être ménagé avec vaccumdb</li>
+</ul>
+<p><strong><em>*Attention</em></strong>*</p>
+<p><strong>Spécifiques système avancées</strong></p>
+<ul>
+<li>pg_controldata : vérifie l'état du serveur et des infos critiques</li>
+<li>pg_resetwal : en cas de crash avec des pb de WAL (risques de pertes de données)</li>
+<li>pg_receive_wal : récupération des WAL d'une autre DB (réplication)</li>
+<li>pg_basebackup : récupération de datas par une autre connexion à une autre DB (réplication)</li>
+</ul>
+<p>3.4 PostgreSQL est un service</p>
+<p>PostgreSQL est considéré comme un service
+Création du fichier .bat de connexion au démarrage</p>
+<ol>
+<li>Focus sur les Tablespaces</li>
+</ol>
+<p>PGDATA / La ou on a le dossier base / dossier avec des chiffres OID </p>
+<p>Physiquement le pgdefaut si on change rien tous les emplacements physqiues se trouvent ici.</p>
+<p>Par contre je peux mettre mabase et tous les objets à l'intérieur ou une partie dans un autre endroit</p>
+<p>Par exemple on peut mettre les indexations (indexes) dans des diques ultraperformant. Mettre donc le tablespace dans un SSD pour être plus rapide et les données sur un HDD</p>
+<p>On peut donc stocker des OID sur des disques différents</p>
+<table>
+<thead>
+<tr>
+<th>d</th>
+<th>rwx</th>
+<th>rwx</th>
+<th>rwx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dossier</td>
+<td>proprietaire</td>
+<td>groupe</td>
+<td>utilisateur</td>
+</tr>
+</tbody>
+</table>
+<p>Si par exemple on a un disque saturé on peut mettre du coup le sOID sur d'autres disques</p>
+<ol>
+<li>créer le dossier physqiue sur le disque</li>
+<li>
+<p>Création de la tablespace dans le dossier Physique</p>
+<p>CREATE TABLESPACE mine OWNER postgres   LOCATION '/home/idgeo/tablespace';</p>
+</li>
+<li>
+<p>Les objets vont dans les Tablespaces</p>
+</li>
+<li>
+<p>Le rôle de DBA</p>
+</li>
+</ol>
+<p>la gestion des droits utilisateurs,</p>
+<p>la gestion des tablespaces,</p>
+<p>la gestion de l'espace disque,</p>
+<p>identifier les tables à suivre,</p>
+<p>la gestion des sauvegardes</p>
+<ol>
+<li>Manipulations diverses</li>
+</ol>
+<p>Pgtune &amp; modification de la configuration du serveur</p>
+<p>Gestion des tablespaces</p>
+<p>Création d'une base et attribution du tablespace</p>
+<p>Création d'une base de données template</p>
+<p>Création d'un utilisateur = ! de postgres</p>
+<p>Création de tables et affectation à un tablespace</p>
+<p>Création d'indexes et affectation à un tablespace</p>
+<ol>
+<li>Sauvegarder / Restaurer - Maintenir un serveur de bases de données</li>
+</ol>
+<p>4.1. Maintenance - Vacuum et autre dashboard</p>
+<p>4.1.1. Définition
+Récupère l'espace inutilisé et, optionnellement, analyse une base.</p>
+<p>Lors des opérations normales de PostgreSQL, les lignes supprimées ou rendues obsolètes par une mise à jour ne sont pas physiquement supprimées de leur table.</p>
+<p>Vacuum permet de récupérer l'espace occupé par les lignes supprimées.</p>
+<p>4.1.2 Remarque</p>
+<p>Le VACCUM standard (sans FULL) récupère simplement l'espace et le rend disponible pour une réutilisation. Cette forme de la commande peut opérer en parallèle avec les opérations normales de lecture et d'écriture de la table, car elle n'utilise pas de verrou exclusif.</p>
+<p>VACCUM FULL fait un traitement plus complet et, en particulier, déplace des lignes dans d'autres blocs pour compacter la table au maximum sur le disque. Cette forme est beaucoup plus lente et pose un verrou exclusif sur la table pour faire son traitement.</p>
+<p>Des VACUUM standard et d'une fréquence modérée sont une meilleure approche que des VACUUM FULL, même non fréquents, pour maintenir des tables mises à jour fréquemment.</p>
+<p>4.1.3. <strong>Conseil</strong></p>
+<p>Après avoir ajouté ou supprimé un grand nombre de lignes, il peut être utile de faire un VACUUM ANALYZE sur la table affectée. Cela met les catalogues système à jour de tous les changements récents et permet à l'optimiseur de requêtes de PostgreSQL™ de faire de meilleurs choix lors de l'optimisation des requêtes.</p>
+<p>Pour exécuter un VACUUM sur une table, vous devez habituellement être le propriétaire de la table ou un super utilisateur. Les propriétaires de la base de données sont autorisés à exécuter VACUUM sur toutes les tables de leurs bases de données, sauf sur les catalogues partagés. Cette restriction signifie qu'un vrai VACUUM sur une base complète ne peut se faire que par un super utilisateur.</p>
+<p>Il est recommandé que les bases de données actives de production soient traitées par VACUUM fréquemment (au moins toutes les nuits), pour supprimer les lignes mortes.</p>
+<p>4.2. Auto-vacuum
+Automatiser l'exécution des commandes VACUUM et ANALYZE</p>
+<p>Une fois activé, le démon autovacuum s'exécute périodiquement et vérifie les tables ayant un grand nombre de lignes insérées, mises à jour ou supprimées. Ces vérifications utilisent la fonctionnalité de récupération de statistiques au niveau ligne.</p>
+<p>Dans la configuration par défaut, l'autovacuum est activé et les paramètres liés sont correctement configurés.</p>
+<p><strong>EXO</strong>
+ sudo psql -U postgres -p 5433 -f /mnt/d/olivier/A2_admin_BDD/top_14.sql</p>
+<p>Va intégrer lire le fichier sql et faire tout ce que celui ci demande. On y met aussi les informations psql comme \c ou \l+</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- Créer la base de données &quot;rugby_top&quot; avec l&#39;extension PostGIS</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">rugby_top</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mine</span><span class="p">;</span>
+<span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">rugby_top</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="n">postgis</span><span class="p">;</span>
+
+<span class="c1">-- Créer la table &quot;clubs_rugby&quot; avec un champ géométrique &quot;geom&quot;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nom_club</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ville</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">latitude</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">,</span>
+<span class="w">    </span><span class="n">longitude</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">,</span>
+<span class="w">    </span><span class="n">geom</span><span class="w"> </span><span class="n">GEOMETRY</span><span class="p">(</span><span class="n">Point</span><span class="p">,</span><span class="w"> </span><span class="mi">4326</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">-- Création de l&#39;index spatail sur geom</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_club_geom</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">gist</span><span class="w"> </span><span class="p">(</span><span class="n">geom</span><span class="p">);</span>
+
+<span class="c1">-- Insérer les données des 14 clubs du Top 14 avec leurs coordonnées géographiques</span>
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="w"> </span><span class="p">(</span><span class="n">nom_club</span><span class="p">,</span><span class="w"> </span><span class="n">ville</span><span class="p">,</span><span class="w"> </span><span class="n">latitude</span><span class="p">,</span><span class="w"> </span><span class="n">longitude</span><span class="p">,</span><span class="w"> </span><span class="n">geom</span><span class="p">)</span>
+<span class="k">VALUES</span>
+<span class="p">(</span><span class="s1">&#39;Stade Toulousain&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Toulouse&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6047</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">4442</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">1</span><span class="p">.</span><span class="mi">4442</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6047</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Union Bordeaux-Bègles&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bordeaux&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">.</span><span class="mi">8378</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">5792</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">5792</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">.</span><span class="mi">8378</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Stade Rochelais&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;La Rochelle&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">1603</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">1511</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">1511</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">1603</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;ASM Clermont Auvergne&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Clermont-Ferrand&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7772</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="mi">0870</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">3</span><span class="p">.</span><span class="mi">0870</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7772</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;RC Toulon&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Toulon&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">1242</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">9280</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="mi">9280</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">1242</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Racing 92&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Nanterre&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8924</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">2066</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2066</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8924</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Stade Français Paris&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Paris&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8412</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">2530</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2530</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">.</span><span class="mi">8412</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Castres Olympique&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Castres&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6062</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">2400</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">2400</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6062</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Montpellier Hérault Rugby&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Montpellier&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6110</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">.</span><span class="mi">8767</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">3</span><span class="p">.</span><span class="mi">8767</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">6110</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Section Paloise&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pau&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">2951</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">3700</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">3700</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">2951</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Aviron Bayonnais&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bayonne&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">4929</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">4748</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">4748</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">.</span><span class="mi">4929</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;USA Perpignan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Perpignan&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">.</span><span class="mi">6986</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">.</span><span class="mi">8956</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">2</span><span class="p">.</span><span class="mi">8956</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">.</span><span class="mi">6986</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;LOU Rugby&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Lyon&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7600</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">.</span><span class="mi">8320</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">4</span><span class="p">.</span><span class="mi">8320</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">.</span><span class="mi">7600</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">)),</span>
+<span class="p">(</span><span class="s1">&#39;Oyonnax Rugby&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Oyonnax&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">2598</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">.</span><span class="mi">6556</span><span class="p">,</span><span class="w"> </span><span class="n">ST_SetSRID</span><span class="p">(</span><span class="n">ST_MakePoint</span><span class="p">(</span><span class="mi">5</span><span class="p">.</span><span class="mi">6556</span><span class="p">,</span><span class="w"> </span><span class="mi">46</span><span class="p">.</span><span class="mi">2598</span><span class="p">),</span><span class="w"> </span><span class="mi">4326</span><span class="p">));</span>
+
+<span class="c1">-- Afficher la structure de la table</span>
+<span class="err">\</span><span class="n">d</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="p">;</span>
+
+<span class="c1">-- Voir le tablespace des base \l+</span>
+<span class="err">\</span><span class="n">l</span><span class="o">+</span>
+<span class="c1">-- Voir le contenur de la table</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">clubs_rugby</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>4.3. Dashboard - Visuel sur les indicateurs de la base</p>
+<p>4.2. Les tablespaces</p>
+<p><strong>definition</strong></p>
+<p>Les tablespaces se définissent en amont de la base.</p>
+<p>On les nomme et leur indique un dossier physique dans l'arborescence de la machine, de préférence dans un emplacement de stockage puisqu'il va contenir les données.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">nom_du_tbsp</span><span class="w"> </span><span class="k">OWNER</span><span class="w"> </span><span class="n">user_name</span><span class="w"> </span><span class="k">LOCATION</span><span class="w"> </span><span class="o">/</span><span class="n">emplacement</span><span class="o">/</span><span class="n">choisi</span><span class="o">/</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Attention</strong>
+La configuration de base ...
+La configuration de base stocke toutes les bases dans le même emplacement PGDATA/base ...</p>
+<p>Cela suppose de prévoir l'espace nécessaire à cet emplacement.</p>
+<p>C'est le risque de tout perdre ! Tout est au même endroit. (ndrl toutes les bases)</p>
+<p>En terme d'optimisation, il y a mieux à faire.</p>
+<p><strong>Remarque : La gestion des Tablespaces et bonnes pratiques.</strong></p>
+<ul>
+<li>Création d'un emplacement (dossier) par base.</li>
+<li>Création de plusieurs Tablaspaces par base possible (si on atteint la capacité maximale d'un disque par exemple).</li>
+<li>Séparation des tables et des indexes sur des tablespaces différent.s L'indexation et son utilisation étant gourmand en ressources, il est envisageable de stocker les indexes sur un disque rapide type SSD et les tables sur disque mécanique.</li>
+</ul>
+<p>4.3. Sauvegarder et restaurer les données de postgreSQL en ligne de commande</p>
+<p><strong>4.3.1 Sauver</strong></p>
+<p>Objectif : produire un fichier texte de commandes SQL (« fichier dump »), qui, si on le renvoie au serveur, recrée une base de données identique à celle sauvegardée.</p>
+<p>PostgreSQL™ propose pour cela le programme utilitaire pg_dump.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">fichier_sauvegarde</span>
+
+<span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="n">rugby_top</span><span class="w"> </span><span class="o">-</span><span class="n">U</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">5434</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">rugby_save</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></div></td></tr></table></div>
+<p>Les extractions peuvent être réalisées sous la forme de scripts ou de fichiers d'archive.</p>
+<ul>
+<li>
+<p>Les scripts sont au format texte et contiennent les commandes SQL nécessaires à la reconstruction de la base de données dans l'état où elle était au moment de la sauvegarde. La restauration s'effectue en chargeant ces scripts avec psql.</p>
+</li>
+<li>
+<p>La reconstruction de la base de données à partir d'autres formats de fichiers archive est obtenue avec pg_restore. Les formats de fichier en sortie les plus flexibles sont le format « custom » (-Fc) et le format « directory » (-Fd). Ils permettent la sélection et le ré-ordonnancement de tous les éléments archivés, le support de la restauration en parallèle. De plus, ils sont compressés par défaut. Le format « directory » est aussi le seul format à permettre les sauvegardes parallélisées.</p>
+</li>
+</ul>
+<p>pg_dump permet de restaurer des bases dans des versions du serveur plus récentes.</p>
+<p><strong>Remarque</strong></p>
+<p>pg_dump est aussi la seule méthode qui fonctionnera lors du transfert d'une base de données vers une machine d'une architecture différente (comme par exemple d'un serveur 32 bits à un serveur 64 bits).</p>
+<p><strong>4.3.2 Restaurer</strong></p>
+<p>Les fichiers texte créés par pg_dump peuvent être lus par le programme psql.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">psql</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">fichier_sauvegarde</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Remarque</strong></p>
+<p>Tous les utilisateurs possédant des objets ou ayant certains droits sur les objets de la base sauvegardée doivent exister préalablement à la restauration de la sauvegarde. S'ils n'existent pas, la restauration échoue pour la création des objets dont ils sont propriétaires ou sur lesquels ils ont des droits.</p>
+<p><strong>4.3.3 Sauvegarder une base directement d'un serveur sur un autre</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pg_dump</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="n">serveur1</span><span class="w"> </span><span class="n">base_de_donnees</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">psql</span><span class="w"> </span><span class="o">-</span><span class="n">h</span><span class="w"> </span><span class="n">serveur2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">base_de_donnees</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Conseil</strong></p>
+<p>Après la restauration d'une sauvegarde, il est conseillé d'exécuter ANALYZE sur chaque base de données pour que l'optimiseur de requêtes dispose de statistiques utiles.</p>
+<p><strong>4.3.4 Mettre en place une sauvegarde automatique</strong></p>
+<p>Encore une fois, suivant la taille de la structure des sauvegardes peuvent intervenir à plusieurs niveau.</p>
+<ul>
+<li>
+<p>Bien souvent, il existe une sauvegarde du serveur qui héberge le serveur PostgreSQL.</p>
+</li>
+<li>
+<p>On peut mettre une sauvegarde au niveau d'une base de données en choisissant le rythme adéquat (mise à jour des données régulière, vs modèles peu évolutif)</p>
+</li>
+</ul>
+<p><strong>Exemple : Script + crontab</strong></p>
+<p>Etablir une commande pg_dump dans un script bash vers une sortie « .dump »</p>
+<p>Ce fichier pour s'appeler</p>
+<p>On positionnera ce script dans le dossier /usr/bin/</p>
+<p>Etablir une commande pg_dump dans un script bash vers une sortie « .dump »</p>
+<p>Ce fichier pour s'appeler</p>
+<p>On positionnera ce script dans le dossier /usr/bin/
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">DB_USER</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="w">          </span><span class="c1"># utilisateur de la base de données PostgreSQL</span>
+<span class="nv">DB_NAME</span><span class="o">=</span><span class="s2">&quot;ma_base&quot;</span><span class="w">           </span><span class="c1"># nom de la base de données à sauvegarder</span>
+<span class="nv">DB_SCHEMA</span><span class="o">=</span><span class="s2">&quot;pourquoi_pas&quot;</span><span class="w">    </span><span class="c1"># pour ne sauver que le schéma</span>
+<span class="nv">current_date</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span>
+<span class="nv">backup_file</span><span class="o">=</span><span class="s2">&quot;/home/xxx/sauv_bdd/sauv_</span><span class="si">${</span><span class="nv">DB_NAME</span><span class="si">}${</span><span class="nv">DB_SCHEMA</span><span class="si">}${</span><span class="nv">current_date</span><span class="si">}</span><span class="s2">.dump&quot;</span>
+</code></pre></div></td></tr></table></div></p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>if ! pg_dump -U &quot;$DB_USER&quot; -F c &quot;$DB_NAME&quot; -n &quot;$DB_SCHEMA&quot; &gt; &quot;$backup_file&quot;; then
+echo &quot;Echec: La sauvegarde de la bdd a échouée&quot;
+return 1
+fi
+printf &quot;Sauvegarde de la base ok&quot;
+</code></pre></div></td></tr></table></div>
+Paramétrer une tâche « Crontab »</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>crontab -e
+
+# m h  dom mon dow   command
+20 * * * * /usr/bin/script_sauv.sh
+</code></pre></div></td></tr></table></div>
+Ca veut dire qu'a chaque fois qu'on est à 20 minutes dans l'heure alors il fait une sauvegarde.</p>
+<p><strong>4.3.4 Utilisation de pg_dumpall</strong></p>
+<p>Permet une sauvegarde de tout un cluster (bases de données, rôles et tablespaces).</p>
+<p>Permet une sauvegarde de tout un cluster (bases de données, rôles et tablespaces).</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pg_dumpall<span class="w"> </span>&gt;<span class="w"> </span>fichier_sauvegarde
+</code></pre></div></td></tr></table></div>
+Le fichier de sauvegarde résultant peut être restauré avec psql :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span><span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE DATABASE nombase;&quot;</span>
+psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span><span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>-d<span class="w"> </span>nombase<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE EXTENSION postgis;&quot;</span>
+psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span><span class="w"> </span>-U<span class="w"> </span>utilisateur<span class="w"> </span>-d<span class="w"> </span>nombase<span class="w"> </span>-f<span class="w"> </span>chemin<span class="se">\c</span>omplet<span class="se">\d</span>u<span class="se">\f</span>ichier.sql
+</code></pre></div></td></tr></table></div>
+<p>Il est préférable d'avoir les droits de superutilisateur de la base de données pour obtenir une sauvegarde complète.</p>
+<p>Il faut obligatoirement avoir le profil superutilisateur pour restaurer une sauvegarde faite avec pg_dumpall, afin de pouvoir restaurer les informations sur les rôles et les tablespaces. Si les tablespaces sont utilisés, il faut s'assurer que leurs chemins sauvegardés sont appropriés à la nouvelle installation.</p>
+<p><strong>pgdump_all c'est bien pour les montées en version, ou changement de bécane.</strong></p>
+<p>Le principe de la sauvegarde c'est à investiguer, la vocation c'est que la sauvegarge ne reste pas sur le meme serveur.</p>
+<h2 id="les-droits-dacces-aux-donnees-roles-et-privileges">Les droits d'accès aux données (rôles et privilèges)<a class="headerlink" href="#les-droits-dacces-aux-donnees-roles-et-privileges" title="Permanent link">&para;</a></h2>
+<p>Le super utilisateur utilisé avec parcimonie est seulement pour 1 personne, un administrateur</p>
+<p>D'un point de vue postgrsql on parle de rôle. Différence entre groupe et utilisateurs c'est la capacité à se connecter.</p>
+<p>La on définit des caractéristiques à un rôle différent des droits
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">postgres</span><span class="w"> </span><span class="k">WITH</span>
+<span class="w">  </span><span class="n">LOGIN</span>
+<span class="w">  </span><span class="n">SUPERUSER</span>
+<span class="w">  </span><span class="n">INHERIT</span><span class="w"> </span><span class="c1">-- ou NO INERIT on peut faire heriter des utilisateurs </span>
+<span class="w">  </span><span class="k">CREATEDB</span><span class="w"> </span><span class="c1">-- ou NOCREATEDB</span>
+<span class="w">  </span><span class="n">CREATEROLE</span>
+<span class="w">  </span><span class="n">REPLICATION</span>
+<span class="w">  </span><span class="n">BYPASSRLS</span>
+<span class="w">  </span><span class="k">ENCRYPTED</span><span class="w"> </span><span class="n">PASSWORD</span>
+</code></pre></div></td></tr></table></div></p>
+<p>Pour créer un template seule le superutilisateur peut le faire</p>
+<p>Pour faire un groupe il faut passer en nologin car le groupe n'est pas un utilisateur </p>
+<h3 id="les-controles-dacces">Les contrôles d'accès<a class="headerlink" href="#les-controles-dacces" title="Permanent link">&para;</a></h3>
+<h3 id="les-privileges-grant">Les privilèges (GRANT)<a class="headerlink" href="#les-privileges-grant" title="Permanent link">&para;</a></h3>
+<p>Un privilège est un <strong>droit</strong> sur un objet de la base <strong>attribué à un rôle</strong>.</p>
+<p>Les SGBD permettent généralement de spécifier assez finement les privilèges d'un utilisateur en fonction des objets manipulés :</p>
+<ul>
+<li>base de données</li>
+<li>schéma</li>
+<li>table (relation)</li>
+<li>colonne (attribut)</li>
+</ul>
+<p>Ainsi, un utilisateur peut se voir attribuer un privilège pour toute une base de données, le contenu d'un schéma, ou seulement pour quelques tables, ou encore sur uniquement quelques colonnes de certaines tables.</p>
+<p><strong>Fondamental : Regles d'attribution des privilèges</strong></p>
+<p><strong>- Règle n°0 : un mot de passe pour chacun</strong></p>
+<p>Tous les utilisateurs (clients, applications) doivent avoir un mot de passe.</p>
+<p><strong>- Règle n°1 : attribution du moindre privilège.</strong></p>
+<p>Les utilisateurs ne doivent avoir que le minimum de droits, ceux strictement nécessaires à l'accomplissement de leurs tâches. Les privilèges peuvent évoluer au cours du temps car les besoins et les tâches affectées ne sont pas immuables, mais à un moment donné, seuls les droits indispensables doivent être fournis à un utilisateur.</p>
+<p>Il faut éviter de créer plusieurs comptes avec des droits d'administrateur.</p>
+<p><strong>- Règle n°2 : contrôle de la population.</strong></p>
+<p>Le personnel d'une entreprise bouge, il y a des départs, des arrivées, des promotions... Les privilèges doivent êtres synchrones avec la réalité de la population : il faut supprimer les comptes des utilisateurs quittant l'entreprise et de ceux n'étant plus affectés à telle ou telle tâche.</p>
+<p><strong>- Règle n°3 : supervision de la délégation des tâches d'administration.</strong></p>
+<p>Un administrateur peut être amené à déléguer auprès d'une autre personne les tâches d'attribution des privilèges de tout ou partie de la population des utilisateurs (cf WITH GRANT OPTION). Un contrôle a posteriori doit être réalisé afin de vérifier que le résultat de cette délégation est conforme à la politique adoptée.</p>
+<p><strong>- Règle n°4 : contrôle physique des connexions.</strong></p>
+<p>La connexion d'un utilisateur à une base de données peut être réalisée depuis n'importe où dans le monde grâce à Internet. Il est nécessaire de restreindre les connexions à des hôtes spécifiques connus (hba_conf).</p>
+<h3 id="les-principaux-privileges">Les principaux privilèges :<a class="headerlink" href="#les-principaux-privileges" title="Permanent link">&para;</a></h3>
+<p>Les droits possibles sont :</p>
+<p><strong>SELECT</strong></p>
+<p>Autorise une sélection sur toutes les colonnes, ou sur les colonnes listées spécifiquement, de la table, vue ou séquence indiquée. Autorise aussi l'utilisation de COPY TO. De plus, ce droit est nécessaire pour référencer des valeurs de colonnes existantes avec UPDATE ou DELETE.</p>
+<p><strong>INSERT</strong></p>
+<p>Autorise une insertion d'une nouvelle ligne dans la table indiquée. Si des colonnes spécifiques sont listées, seules ces colonnes peuvent être affectées dans une commande INSERT, (les autres colonnes recevront par conséquent des valeurs par défaut). Autorise aussi COPY FROM.</p>
+<p><strong>UPDATE</strong></p>
+<p>Autorise une mise à jour sur toute colonne de la table spécifiée, ou sur les colonnes spécifiquement listées. (En fait, toute commande UPDATE nécessite aussi le droit SELECT car elle doit référencer les colonnes pour déterminer les lignes à mettre à jour et/ou calculer les nouvelles valeurs des colonnes.)</p>
+<p><strong>DELETE</strong></p>
+<p>Autorise la suppression d'une ligne sur la table indiquée. (En fait, toute commande DELETE nécessite aussi le droit SELECT car elle doit référencer les colonnes pour déterminer les lignes à supprimer.)</p>
+<p><strong>TRUNCATE</strong></p>
+<p>Autorise la suppression de tous les enregistrements de la table.</p>
+<p><strong>REFERENCES</strong></p>
+<p>Ce droit est requis sur les colonnes de référence et les colonnes qui référencent pour créer une contrainte de clé étrangère. Le droit peut être accordé pour toutes les colonnes, ou seulement des colonnes spécifiques.</p>
+<p><strong>TRIGGER</strong></p>
+<p>Autorise la création d'un déclencheur sur la table indiquée.</p>
+<p><strong>CREATE</strong></p>
+<p>Pour les bases de données, autorise la création de nouveaux schémas dans la base de données.</p>
+<p>Pour les schémas, autorise la création de nouveaux objets dans le schéma. Pour renommer un objet existant, il est nécessaire d'en être le propriétaire et de posséder ce droit sur le schéma qui le contient.</p>
+<p>Pour les tablespaces, autorise la création de tables, d'index et de fichiers temporaires dans le tablespace et autorise la création de bases de données utilisant ce tablespace par défaut. (Révoquer ce privilège ne modifie pas l'emplacement des objets existants.)</p>
+<p><strong>CONNECT</strong></p>
+<p>Autorise l'utilisateur à se connecter à la base indiquée. Ce droit est vérifié à la connexion (en plus de la vérification des restrictions imposées par pg_hba.conf).</p>
+<p><strong>TEMPORARY, TEMP</strong></p>
+<p>Autorise la création de tables temporaires lors de l'utilisation de la base de données spécifiée.</p>
+<p><strong>EXECUTE</strong></p>
+<p>Autorise l'utilisation de la fonction indiquée et l'utilisation de tout opérateur défini sur cette fonction. C'est le seul type de droit applicable aux fonctions. (Cette syntaxe fonctionne aussi pour les fonctions d'agrégat)</p>
+<p><strong>ALL PRIVILEGES</strong></p>
+<p>Octroie tous les droits disponibles en une seule opération. Le mot clé PRIVILEGES est optionnel sous PostgreSQL™ mais est requis dans le standard SQL.</p>
+<p>La commande SQL GRANT permet de définir les droits :</p>
+<h3 id="les-droits-dacces-aux-donnees-spatiales">Les droits d'accès aux données spatiales<a class="headerlink" href="#les-droits-dacces-aux-donnees-spatiales" title="Permanent link">&para;</a></h3>
+<h3 id="les-roles-par-lexemple-illustration-qgis">Les rôles par l'exemple - Illustration QGIS<a class="headerlink" href="#les-roles-par-lexemple-illustration-qgis" title="Permanent link">&para;</a></h3>
+<p>extensions hstore pour integrer des bases de données clés/valeurs</p>
+<h2 id="foreign-data-wrappers">FOREIGN DATA WRAPPERS<a class="headerlink" href="#foreign-data-wrappers" title="Permanent link">&para;</a></h2>
+<p>Faire correspondre une base de données distantes à notre base de données. </p>
+<p>Extention "fdw" 
+"ogr fdw" on peut se connecter à un flux
+"postgre fdw" pour se connecter à une base autre
+" file fdw" se connecter à un fichier</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2026-03-05
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
