@@ -11,7 +11,7 @@ mkdocs gh-deploy
 
 
 # Ajout des fichiers
-git add *
+git add .
 
 # Commit avec le message passé en argument
 git commit -m "$1"

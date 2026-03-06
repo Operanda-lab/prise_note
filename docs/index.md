@@ -1,44 +1,53 @@
-## [Chef de projet](./cdp.md)
 
-## [Marché public](./mp.md "Marchés publics")
 
-## [SQL](./sql.md)
+## Periode 1
 
-## [Bases SIG](./sig.md)
+### [Bases SIG](./sig.md)
 
-## [Python](./python.md)
+### [Marché public](./mp.md "Marchés publics")
 
-## [Veille](./veille.md)
+### [SQL](./sql.md)
 
-## [Droit informatique](./di.md)
+### [Python](./python.md)
 
-## [Open IG](./openig.md)
+### [Veille](./veille.md)
 
-## [Contrôle Qualité](./cq1.md)
+### [Droit informatique](./di.md)
 
-## [Standards](./standards.md)
+### [Chef de projet](./cdp.md)
 
-## [Cycle de données](./cycled.md)
+### [Open IG](./openig.md)
 
-## [Aspects juridiques](./aj.md)
+## Periode 2
 
-## [Contrôle qualité](./cq2.md)
+### [Modelisation MCD, MLD, MPD](./bdd_model.md)
 
-## [IA](./ia.md)
+### [Contrôle Qualité](./cq1.md)
 
-## [SQL/POSTGIS](./postgis.md)
+### [Standards](./standards.md)
 
-## [Interopérabilité](./interoperabilite.md)
+### [Cycle de données](./cycled.md)
 
-## [Sources](./sources.md)
+### [Sources](./sources.md)
 
-## [Outils](./outils.md)
+### [Interopérabilité](./interoperabilite.md)
 
-## [fichier deploiement md](./deploy_auto.md)
+### [Contrôle qualité](./cq2.md)
 
-## [fichier VRT](./vrt.md)
+### [Aspects juridiques](./aj.md)
 
-## [Métadonnées](./metadonnees.md)
+### [IA](./ia.md)
+
+### [fichier VRT](./vrt.md)
+
+### [Métadonnées](./metadonnees.md)
+
+## Outils
+
+### [Outils](./outils.md)
+
+### [fichier deploiement md](./deploy_auto.md)
+
 
 
 
