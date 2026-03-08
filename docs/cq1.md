@@ -174,7 +174,7 @@ Si pas de respect de ces règles d’échantillonnage minimal :
 
 #### Conclusion
 |||
-|||
+|---------|---------|
 | Effectif peu important ou exigence qualité élevée | Contrôle systématique |
 | Autres cas | Échantillonnage: Identifier des strates, Redresser les résultats, LAQ et niveau de confiance |
 
@@ -185,7 +185,7 @@ Si pas de respect de ces règles d’échantillonnage minimal :
 Données excédentaires d’un jeu de données
 
 |Designation calcul|Type|
-|||
+|---------|---------|
 |Elements en excès|Booléen|
 |Nombre d'éléments en excès|INT|
 |Taux d'éléments en excès|Pourcentage|
@@ -195,7 +195,7 @@ Données excédentaires d’un jeu de données
 Données manquantes d’un jeu de données
 
 |Designation calcul|Type|
-|||
+|---------|---------|
 |Elements manquants|Booléen|
 |Nombre d'éléments manquants|INT|
 |Taaux d'éléments manquants|Pourcentage|
