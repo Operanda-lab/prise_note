@@ -1,0 +1,2263 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../ia/">
+      
+      
+        <link rel="next" href="../interoperabilite/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Infrastructure des données géographiques (IDG) - Prise de note CPGEOM 25-27</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans:300,300i,400,400i,700,700i%7CRegular:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Google Sans";--md-code-font:"Regular"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#infrastructure-des-donnees-geographiques-idg" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Prise de note CPGEOM 25-27" class="md-header__button md-logo" aria-label="Prise de note CPGEOM 25-27" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Prise de note CPGEOM 25-27
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Infrastructure des données géographiques (IDG)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Prise de note CPGEOM 25-27" class="md-nav__button md-logo" aria-label="Prise de note CPGEOM 25-27" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Prise de note CPGEOM 25-27
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Administrer_serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administrer son serveur de base de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aj/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aspects juridiques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bdd_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelisation MCD, MLD, MPD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cdp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chef de projet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cq1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contrôle Qualité (Stéphane Rolle)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cq2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contrôle Qualité (Marc Leobet)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cycled/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cycled
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploy_auto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy auto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../di/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Di
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gdal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gdal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ia
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure des données géographiques (IDG)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure des données géographiques (IDG)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panorama-historique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panorama Historique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#par-lapproche-composante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Par l'approche composante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#par-lapproche-reseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Par l'approche réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typologies-idg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typologies IDG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cadre-reglementaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cadre réglementaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamique-des-idg-en-france" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamique des IDG en France
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctionnalites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fonctionnalités
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fonctionnalités">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preconises-par-la-directive-inspire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Préconisés par la directive INSPIRE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vison-idelae-des-fonctionnalites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vison idélae des fonctionnalités
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enjeux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enjeux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enjeux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interroperabilite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interropérabilité
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interop-applique-au-champs-semantique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interop appliqué au champs sémantique.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interop-applique-au-champs-informatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interop appliqué au champs informatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animation-accompagnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation / Accompagnement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stategies-europeenne-de-la-donnee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statégies Européenne de la donnée
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statégies Européenne de la donnée">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#espace-commmun-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espace commmun de données
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-du-ecd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple d'u ECD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-dediteur-vers-ecd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convergence d'editeur vers ECD
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plateforme-territoriale-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plateforme territoriale de données
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plateforme territoriale de données">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-programme-geoplateforme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le programme geoplateforme
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mise-en-oeuvre-dun-processus-de-catalogage-et-de-diffusion-de-donnees-plutot-piloter-un-projet-informatique-au-sens-large" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mise en oeuvre d'un processus de catalogage et de diffusion de données (PLUTOT piloter un projet informatique au sens large)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mise en oeuvre d&#39;un processus de catalogage et de diffusion de données (PLUTOT piloter un projet informatique au sens large)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#portees-et-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Portées et limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-gere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-géré
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-de-vie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle de vie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lanalyse-de-risque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'analyse de risque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONCLUSION
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retour-dexperience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retour d'expérience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution-contexte-national" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution contexte national
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution-contexte-occitanie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution contexte occitanie
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interoperabilite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interopérabilité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metadonnees/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les métadonnées
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ogr_et_vrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Présentation rapide de la librairie GDAL/OGR et du format VRT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Openig
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../outils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outils
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plume
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelisation MCD, MLD, MPD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../script_auto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Automatisation script bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sig
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sources de données et référentiels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sql
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../syntaxe_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    La syntaxe de l'aide sur les commandes SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../veille/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Veille
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    outils VRT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panorama-historique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Panorama Historique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#par-lapproche-composante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Par l'approche composante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#par-lapproche-reseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Par l'approche réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typologies-idg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typologies IDG
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cadre-reglementaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cadre réglementaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamique-des-idg-en-france" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dynamique des IDG en France
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fonctionnalites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fonctionnalités
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fonctionnalités">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preconises-par-la-directive-inspire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Préconisés par la directive INSPIRE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vison-idelae-des-fonctionnalites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vison idélae des fonctionnalités
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enjeux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enjeux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enjeux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interroperabilite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interropérabilité
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interop-applique-au-champs-semantique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interop appliqué au champs sémantique.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interop-applique-au-champs-informatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interop appliqué au champs informatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#animation-accompagnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation / Accompagnement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stategies-europeenne-de-la-donnee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statégies Européenne de la donnée
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Statégies Européenne de la donnée">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#espace-commmun-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espace commmun de données
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-du-ecd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple d'u ECD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convergence-dediteur-vers-ecd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convergence d'editeur vers ECD
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plateforme-territoriale-de-donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plateforme territoriale de données
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plateforme territoriale de données">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-programme-geoplateforme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le programme geoplateforme
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mise-en-oeuvre-dun-processus-de-catalogage-et-de-diffusion-de-donnees-plutot-piloter-un-projet-informatique-au-sens-large" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mise en oeuvre d'un processus de catalogage et de diffusion de données (PLUTOT piloter un projet informatique au sens large)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mise en oeuvre d&#39;un processus de catalogage et de diffusion de données (PLUTOT piloter un projet informatique au sens large)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#portees-et-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Portées et limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-gere" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auto-géré
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-de-vie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle de vie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lanalyse-de-risque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'analyse de risque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CONCLUSION
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retour-dexperience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Retour d'expérience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution-contexte-national" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution contexte national
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution-contexte-occitanie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution contexte occitanie
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="infrastructure-des-donnees-geographiques-idg">Infrastructure des données géographiques (IDG)<a class="headerlink" href="#infrastructure-des-donnees-geographiques-idg" title="Permanent link">&para;</a></h1>
+<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">&para;</a></h2>
+<p>Il y a une couhce de gouvernance, organisatio sur des accords de partage
+Coordiantion de ses membres car cela se fait à plusieurs
+Il y a des services 
+Stockage avec serveur</p>
+<p>à l'échelle d'un territoire pour le citoyen</p>
+<h3 id="panorama-historique">Panorama Historique<a class="headerlink" href="#panorama-historique" title="Permanent link">&para;</a></h3>
+<p>Année 1990 développé en // de l'informatique et SIG</p>
+<h3 id="par-lapproche-composante">Par l'approche composante<a class="headerlink" href="#par-lapproche-composante" title="Permanent link">&para;</a></h3>
+<p>les IDG sont des dispositifs  rassemble informations, SI, normes et standards, accors organisationnels , ressource shumaines et communauté</p>
+<h3 id="par-lapproche-reseau">Par l'approche réseau<a class="headerlink" href="#par-lapproche-reseau" title="Permanent link">&para;</a></h3>
+<p>...</p>
+<h3 id="typologies-idg">Typologies IDG<a class="headerlink" href="#typologies-idg" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Généraliste ou territoriale</li>
+<li>IDG thématique plutot nationale, se concentre sur un enjeu territoriale (littoral, risque, santé ...)</li>
+</ul>
+<h3 id="cadre-reglementaire">Cadre réglementaire<a class="headerlink" href="#cadre-reglementaire" title="Permanent link">&para;</a></h3>
+<ul>
+<li>1978 Loi CADA : Le legislateur a posé un cadre pour faciliter l'accès du citoyen aux documents administratifs. </li>
+<li>2003 PSI au niveau européen : Ens. de règles pour accéder aux doc. admin. commmme la CADA</li>
+<li>2005 Ordonance sur la réutilisation de l'information publique</li>
+<li>2007 Directive INSPIRE : obligation de publier les données environementales et géographiques</li>
+<li>2010 ...</li>
+</ul>
+<h3 id="dynamique-des-idg-en-france">Dynamique des IDG en France<a class="headerlink" href="#dynamique-des-idg-en-france" title="Permanent link">&para;</a></h3>
+<p>A partir de 2008 croissance continue et en 2015 portail Open data
+Mais trop de portails qui sont des moyens de communication aussi</p>
+<p>IDG &gt; Plateforme de données géographiques &gt; Plateforme territoraile de données
+Plateforme englobe les outils de diffsuion mais aussi un dispo. organisationnels</p>
+<p>L'aniamtion doit aussi etre au coeur de ce dispositifs</p>
+<h2 id="fonctionnalites">Fonctionnalités<a class="headerlink" href="#fonctionnalites" title="Permanent link">&para;</a></h2>
+<h3 id="preconises-par-la-directive-inspire">Préconisés par la directive INSPIRE<a class="headerlink" href="#preconises-par-la-directive-inspire" title="Permanent link">&para;</a></h3>
+<p>5 fonctionnalités
+- Services de recherche
+- Services de consultation : Afficher, naviguer
+- Service de téléchargement : Récupérer la données
+- Service de transformation
+- Service d'appel : WMS et WFS Protocole d'échange et CSW(Moissonage)</p>
+<h3 id="vison-idelae-des-fonctionnalites">Vison idélae des fonctionnalités<a class="headerlink" href="#vison-idelae-des-fonctionnalites" title="Permanent link">&para;</a></h3>
+<p>µImportant
+Intégration des normes
+Architecture technique</p>
+<blockquote>
+<p>2000 - 2010
+Geonetwork très brut mais qui a toutes les Fonctionnalités
+<strong>Brique de catalogage Geonetwork (Interface)</strong></p>
+<p>2010 - 2020
+- Envirronement plus Attractif
+- Ajout de cartographie dynamique
+- Ajout de Data viz
+- On met en avant les données par l'usage et simplification des données
+- On developpe l'usage des formats plats (1 seul fichier contient l'information: Geojson) VS les fichiers SIG (avec plusieurs fichiers: SHP...)
+- On va vers 1 donnée = 1 API</p>
+</blockquote>
+<p><strong>Brique de catalogage CKAN (Interface)</strong></p>
+<blockquote>
+<p>2020 - ... : Contributive et sobre (Pas IA)
+- eviter de mettre des choses qui ne servent à rien
+- Problème de stockage
+- Devellopement des 3D et jumeaux numériques
+- Calibrage des données pour 'lusage de l'IA. Ce n'est plus une personne qui va le chercher mais des algo. Qu'est ce qu'il se passe ???</p>
+</blockquote>
+<h2 id="enjeux">Enjeux<a class="headerlink" href="#enjeux" title="Permanent link">&para;</a></h2>
+<h3 id="interroperabilite">Interropérabilité<a class="headerlink" href="#interroperabilite" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Dans le champs sémantique : le sens , le contenu et la structuration des informations. Des modèles qui sont similaires.</li>
+<li>Dans le champs géographiques : Meme projection géodésique, système géographique. Des fois plus spécifique pour certaines info. geographique</li>
+<li>Dans le champs informatique : Protocole d'échanges entre syst. informatique .protocle réseau, systeme de base de données</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>Respecter les principes FAIR
+- <strong>Findable :</strong> S'applique aux données et aux métadonnées.
+- <strong>Accessible :</strong> Facile à trouver par humain et machine
+- <strong>Interoperable :</strong> Une fois les données trouvées, l'utilisateur doit savoir y acceder savoir que la donnée existe meme si non récupérable. Les données peuvent être  intégrer facilement entre elles, et puissent être ouvertes dans les app.
+- <strong>Reusable :</strong> Les données peuvent être réutilisable pour d ela recherche par exemple</p>
+</blockquote>
+</blockquote>
+<h3 id="interop-applique-au-champs-semantique">Interop appliqué au champs sémantique.<a class="headerlink" href="#interop-applique-au-champs-semantique" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fabrique des standards</li>
+<li>Contribuer techniquement à rendre la donnée FAIR</li>
+<li>Plusieurs réf. en cours de mise en place.</li>
+</ul>
+<h3 id="interop-applique-au-champs-informatique">Interop appliqué au champs informatique<a class="headerlink" href="#interop-applique-au-champs-informatique" title="Permanent link">&para;</a></h3>
+<p>Open geospatial consortium
+Architecture de haut niveau - OGC Standards baseline</p>
+<h3 id="animation-accompagnement">Animation / Accompagnement<a class="headerlink" href="#animation-accompagnement" title="Permanent link">&para;</a></h3>
+<p>Evolution des profils utilisateurs de - en - spécialistes géomatique. Comment fait on pour accompagner les usages ?
+Dire aux thématiciens (zonage, espace anturel sensible ...)
+Connecter une donnée sans composante géographique à des points géo : Elements Pivots (exemple code INSEE)
+Le CRIGES améliore l'interop.</p>
+<h2 id="stategies-europeenne-de-la-donnee">Statégies Européenne de la donnée<a class="headerlink" href="#stategies-europeenne-de-la-donnee" title="Permanent link">&para;</a></h2>
+<p>fev. 2020 Mise en oeuvre
+Objectif : créer un marché unique de la donnée pour garantir et allier compétitivité mondiale et la souveraineté en Europe.</p>
+<blockquote>
+<p>cadre juridique approprié a déployé : DGA, DA, IAA
+Création d'<strong>Espaces communs de données (ECD)</strong> ou <strong>Data Space</strong></p>
+</blockquote>
+<p>Cet espace de données "réunit les insfrastructures de données pertinentes et les cadres de gouvernance afin de faciliter la mise en commun et le partage de données"</p>
+<h3 id="espace-commmun-de-donnees">Espace commmun de données<a class="headerlink" href="#espace-commmun-de-donnees" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Espace de confiance</li>
+<li>Données non centralisées</li>
+<li>Création d'un centre d'appui aux espace de donnés</li>
+<li>Emergence d'initiative : <a href="https://mydata.org/">Mydata</a>, <a href="https://gaia-x.eu/">Consortium Gaia-X</a></li>
+</ul>
+<h3 id="exemple-du-ecd">Exemple d'u ECD<a class="headerlink" href="#exemple-du-ecd" title="Permanent link">&para;</a></h3>
+<p>Eona-X : projet européen pour faire marcher des flux de trqansport. avec des données partagées.</p>
+<h3 id="convergence-dediteur-vers-ecd">Convergence d'editeur vers ECD<a class="headerlink" href="#convergence-dediteur-vers-ecd" title="Permanent link">&para;</a></h3>
+<p>Collectif CICCLO et Gaia-X</p>
+<h2 id="plateforme-territoriale-de-donnees">Plateforme territoriale de données<a class="headerlink" href="#plateforme-territoriale-de-donnees" title="Permanent link">&para;</a></h2>
+<p>environ 130 soit régionales soit départementales
+Certains tres thématique nationales (géorisque, agence ORE, géofoncier, Plateforme du SHOM, geoportail &gt; geoplateforme avec cartes.gouv)</p>
+<p>Solution de diffsuion de données</p>
+<p><strong>Open source , utilisateur influence la roadmap</strong></p>
+<ul>
+<li>Prodige - Communautaire opensource</li>
+<li>Georquestra</li>
+<li>Onegeo Suite</li>
+<li>Isogeo</li>
+</ul>
+<p>La plupart des briques utilisées sont internationnales</p>
+<h3 id="le-programme-geoplateforme">Le programme geoplateforme<a class="headerlink" href="#le-programme-geoplateforme" title="Permanent link">&para;</a></h3>
+<p>Infra mutualisé et collaborative pour production et diffusion des geo données</p>
+<ol>
+<li>un moteur et une infrstructure un peu cachée : Socle technique pour pouvoir diffuser et agir dessus</li>
+<li>Intefacage et diffusion / Une carte : carte.gouv</li>
+</ol>
+<p>Promesse : d'autres structures que l'IGN peuvent y participer</p>
+<h2 id="mise-en-oeuvre-dun-processus-de-catalogage-et-de-diffusion-de-donnees-plutot-piloter-un-projet-informatique-au-sens-large">Mise en oeuvre d'un processus de catalogage et de diffusion de données (PLUTOT piloter un projet informatique au sens large)<a class="headerlink" href="#mise-en-oeuvre-dun-processus-de-catalogage-et-de-diffusion-de-donnees-plutot-piloter-un-projet-informatique-au-sens-large" title="Permanent link">&para;</a></h2>
+<h3 id="portees-et-limites">Portées et limites<a class="headerlink" href="#portees-et-limites" title="Permanent link">&para;</a></h3>
+<p>problématique avant outils</p>
+<p><strong>SAAS :</strong>
+- Avantages:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>- tranquilité d&#39;esprit
+- Peu de compétences techniques
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>
+<p>Inconvénients :</p>
+<ul>
+<li>Coût</li>
+<li>Dépendant du prestataire</li>
+<li>CCTP solide (c'est àdire bien définir le cahier des charges)</li>
+<li>Possibilités d'évolutions limitées</li>
+</ul>
+</li>
+</ul>
+<p><strong>Hybride :</strong>
+- Avantages:
+    - Délègue une partie des coûts
+    - indépendant sur l'évolution d'une partie</p>
+<ul>
+<li>
+<p>Inconvénients :</p>
+<ul>
+<li>Selon avoir besoind econnaissances techniques</li>
+<li>Difficulté à faire communiquer nos outils</li>
+<li>Dépendant des mises à jour</li>
+</ul>
+</li>
+</ul>
+<p><strong>Auto-géré :</strong>
+- Avantages:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>- Maitrise totale, 
+- cout contenu, 
+- valorisant, 
+- permet de s&#39;intégrer dans communauté
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>
+<p>Inconvénients :</p>
+<ul>
+<li>Solides connaissances, </li>
+<li>piloter un SI, </li>
+<li>veille cybersécurité</li>
+</ul>
+</li>
+</ul>
+<h3 id="auto-gere">Auto-géré<a class="headerlink" href="#auto-gere" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Internalisation de l'hébergement ou délégation</p>
+<ul>
+<li>Contrat prestataire .DNS, sauvegarde, déploiement, comment changer les connexions  serveur, modalité de l'assistance (ticket ..)</li>
+<li>Est ce que la DSI a déjà un contrat ?</li>
+<li>Structuration du SI</li>
+<li>cartographie :</li>
+<li>Documentation : le registre des accès, elle permet de faire une continuité de Services</li>
+<li>Evolution : agir sur tentative d'inclusion, cyberattaque, limiter la surface d'attaque,</li>
+<li>veille : rapport du CERT (pour cybersécurité) agence de L'ANSSI </li>
+</ul>
+</li>
+<li>
+<p>Formation et sensibilisation</p>
+<ul>
+<li>Les utilisateurs ont parfois trop de droits
+    -&gt; Gérer les accès, tenir un registre, </li>
+</ul>
+</li>
+</ul>
+<h3 id="cycle-de-vie">Cycle de vie<a class="headerlink" href="#cycle-de-vie" title="Permanent link">&para;</a></h3>
+<p>Le PDCA, plan do check act</p>
+<ol>
+<li>plannification (Plan)</li>
+</ol>
+<p>travaille à valider , objectif de projet, livrable attendu, les participants, les risques ou contraintes , indicateur de réussite.</p>
+<ol>
+<li>Réaliser (do):</li>
+</ol>
+<p>On met le projet à l'epreuve en faisant un mini projet</p>
+<ol>
+<li>Contrôle (check)</li>
+</ol>
+<p>On fait les contrôles. C'est à cette etape qu'on voit les choses à corriger , les anomalies.</p>
+<ol>
+<li>Agir (act)</li>
+</ol>
+<p>Mise en production</p>
+<h3 id="lanalyse-de-risque">L'analyse de risque<a class="headerlink" href="#lanalyse-de-risque" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Critères d'évaluation</li>
+</ul>
+<p>4 étapes</p>
+<ul>
+<li>Identification des risques : panne, erreur réseau</li>
+<li>Evaluation: probabilité d'apparition et gravité , création d'indicateurs. =&gt; prioriser les point sà traiter. A faire dans un groupe de travail pour voir des choses qu'on ne peut voir tout seul</li>
+<li>Cartographie des risques permet de voir la tache à traiter en priorité</li>
+<li>Traitements des risques : 2 approches<ul>
+<li>Action préventive pour limiter l'impact</li>
+<li>Plan d'action. Au cas ou un événement se produirait , quelles méthodes pour régler le problème. Je préviens qui =&gt; <strong>procédures</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="conclusion">CONCLUSION<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>Un SIG est la-même chose qu'un SI
+Une mise à jour c'est déjà ça pour aller contre les hackers
+Toujours contacter les SI et discuter , ça nous permet d'imaginer les problèmes possibles.</p>
+<h2 id="retour-dexperience">Retour d'expérience<a class="headerlink" href="#retour-dexperience" title="Permanent link">&para;</a></h2>
+<p>Se rend compte que :
+- Ergonomie inadaptée
+- Maj de l'applicatif difficile
+- pb de sécurité</p>
+<p>Les utilisateurs sont toujours ok pour un catalogage</p>
+<p>Site internet et portail imbriqués</p>
+<p>Mise en place d'une AMO pour définir les contours, refondre l'IDG</p>
+<p>L'AMO devait aider à mieux comprendre l'IDG et comment la faire
+produire une synthese des enjeux régionnaux. Réalisé en l'espace de 3 mois
+Definir des scénarios</p>
+<ol>
+<li>
+<p>Phase 1 Diagnostic</p>
+</li>
+<li>
+<p>Faire emmerger une vision partagée des futurs services de l'IDG</p>
+</li>
+<li>Identifier des profils utilisateurs et identifier les besoins : ont fait des entretiens avec des personnes, et des enquêtes.</li>
+<li>
+<p>Mise en exergue de 5 besoins</p>
+<ul>
+<li>Produire</li>
+<li>Rechercher</li>
+<li>Partager</li>
+<li>Commander</li>
+<li>S'informer</li>
+</ul>
+</li>
+<li>
+<p>Des personnas ont été identifiés : archétype d'utilisateurs</p>
+<ul>
+<li>5 personnas primaires</li>
+<li>4 personnas retenus</li>
+</ul>
+</li>
+<li>
+<p>Scenarii et feuille de route</p>
+</li>
+</ol>
+<p>. Recherche, commande et téléchargement données
+. Recherche réccurente avec téléchargement
+. Partage(diffusion) de données avec adhésion à OPEN IGN
+. Mise en conformité et partage de données 
+. Co production basé sur le partage</p>
+<p><strong>Promesse de service :</strong>
+3 chantiers </p>
+<ol>
+<li>Mettre en oeuvre les chantiers</li>
+</ol>
+<p>...
+...
+...</p>
+<h2 id="evolution-contexte-national">Evolution contexte national<a class="headerlink" href="#evolution-contexte-national" title="Permanent link">&para;</a></h2>
+<ul>
+<li>outils nationnaux augmentation</li>
+<li>Concept de données territoriales</li>
+<li>Besoins de données pour accompagnée les "transitions" et les adaptations au changement climatique</li>
+<li>IA</li>
+<li>Common european Data spaces</li>
+<li>Contraintes budgétaires </li>
+</ul>
+<h2 id="evolution-contexte-occitanie">Evolution contexte occitanie<a class="headerlink" href="#evolution-contexte-occitanie" title="Permanent link">&para;</a></h2>
+<ul>
+<li>La région laisse les pouvoirs d'aniamtion autour de l'open data en occitanie</li>
+<li>Préfiguration comité territorial de la donnée nen occitanieContriantes budgétaires</li>
+</ul>
+<p>https://github.com/multibao/contributions/blob/master/contributions/accelerateur_de_projets.md</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    2026-03-10
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
