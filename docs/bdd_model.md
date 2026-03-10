@@ -134,10 +134,15 @@ Le modèle physique de données décrit de manière précise la manière dont le
 ## Construire un MCD
 
 **entité** = Classe d 'objet - objets - table - éléments rééls d'un objet matériel ou immatériel
+
 **propriété** = attribut - les champs - Caractériqtiques de entités séparées et identifiées
+
 **association** = relation - lien qui est fait entre les entités
+
 **client postgresql** = Pgadmin, ligne de commande sur wsl ou terminaux
+
 **Cast** = transtypage ou coercition
+
 **Cardinalité** = la définition, l'évaluation des liens entre les entités.
  
 

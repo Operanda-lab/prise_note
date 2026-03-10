@@ -42,14 +42,16 @@
 
 ### [Métadonnées](./metadonnees.md)
 
+### [Admin Base de données](./Administrer_serveur.md)
+
+### [Infrastructure de Données Géographiques (IDG)](./idg.md)
+
+
 ## Outils
 
 ### [Outils](./outils.md)
 
 ### [fichier deploiement md](./deploy_auto.md)
 
-
-## [Admin Base de données](./Administrer_serveur.md)
-
-
+## [Accelerateur de projets](https://github.com/multibao/contributions/blob/master/contributions/accelerateur_de_projets.md)
 
