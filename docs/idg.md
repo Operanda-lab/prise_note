@@ -331,3 +331,25 @@ Definir des scénarios
 - Préfiguration comité territorial de la donnée nen occitanieContriantes budgétaires
 
 https://github.com/multibao/contributions/blob/master/contributions/accelerateur_de_projets.md
+
+[Klaxoon](https://app.klaxoon.com/participate/board/G63KV9E)
+
+## 2ème IDG-portail REGEX
+
+## **C'est le mode de gouvernance**
+- Chaque participants est libre de faire partie d'un groupe de travail et aussi opportunité dans leur emploi du temps
+- But avoir du monde pour avoir une représentativité
+- Ca permet aux gens d'être motivé
+
+
+Travail sur 2 scenarios
+- OpenIg infrstructure 
+- Centralise les métadonnées des adhérents via des outils nationnaux
+
+- Recueil de besoins
+- Recensement des solutions existantes
+
+
+### Principales thématique abordéeslors du GT1
+
+
